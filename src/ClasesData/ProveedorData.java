@@ -11,6 +11,7 @@ import Modelo.Producto;
 import Modelo.Proveedor;
 import Modelo.detalleCompra;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -72,12 +73,28 @@ public class ProveedorData {
 Los usuarios podrán registrar pedidos de productos a los proveedores. 
 Deberán especificar  el producto solicitado, la cantidad y la fecha del pedido.
      */
-    public void registrarPedidos(Producto producto, Compra compra, detalleCompra compraAproveedores) {
+    public void registrarCompra(int idProveedor, Compra compra) {
 
-       String sql=  " INSERT INTO compra (idProveedor, fecha) VALUES ('?','?','?') ";
-       
-        
-        // "SELECT * FROM producto WHERE  stock>0 ";
+       String sql=  " INSERT INTO compra (idProveedor, fecha) VALUES ('?','?') ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, idProveedor);
+            ps.setDate(2, Date.valueOf(compra.getFecha()));
+            
+            ps.executeUpdate();
+            
+            ResultSet rs = ps.getGeneratedKeys();
+            
+            while(rs.next()){
+                compra.setIdCompra(rs.getInt("idCompra"));
+                JOptionPane.showMessageDialog(null, "Compra generada");
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla proveedor");
+            
+        }
       
     }
 
