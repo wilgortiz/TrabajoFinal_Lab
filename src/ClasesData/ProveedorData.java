@@ -9,7 +9,7 @@ package ClasesData;
 import Modelo.Compra;
 import Modelo.Producto;
 import Modelo.Proveedor;
-import Modelo.detalleCompra;
+import Modelo.DetalleCompra;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -73,12 +73,12 @@ public class ProveedorData {
 Los usuarios podrán registrar pedidos de productos a los proveedores. 
 Deberán especificar  el producto solicitado, la cantidad y la fecha del pedido.
      */
-    public void registrarCompra(int idProveedor, Compra compra) {
+    public void registrarCompra(Compra compra) {
 
        String sql=  " INSERT INTO compra (idProveedor, fecha) VALUES ('?','?') ";
         try {
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, idProveedor);
+            ps.setInt(1, compra.getProveedorC().getIdProveedor());
             ps.setDate(2, Date.valueOf(compra.getFecha()));
             
             ps.executeUpdate();
@@ -96,6 +96,24 @@ Deberán especificar  el producto solicitado, la cantidad y la fecha del pedido.
             
         }
       
+    }
+    
+    public void registrarDetalleCompra( DetalleCompra detalle){ 
+        String sql = "INSERT INTO detallecompra(cantidad, precioCosto, idCompra, idProducto) VALUES (?,?,?,?);";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, detalle.getCantidad());
+            ps.setDouble(2, detalle.getPrecioCosto());
+            ps.setInt(3, detalle.getCompra().getIdCompra());
+            ps.setInt(4, detalle.getProducto().getIdProducto());
+            
+            ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla detalle de compra");
+        }
+        
+        
     }
 
 }

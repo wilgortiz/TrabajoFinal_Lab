@@ -2,24 +2,24 @@
 package Modelo;
 
 
-public class detalleCompra {
+public class DetalleCompra {
     private int idDetalleCompra;
     private int cantidad;
     private double precioCosto;
     private Compra compra;
     private Producto producto;
      
-    public detalleCompra() {
+    public DetalleCompra() {
     }
 
-    public detalleCompra(int cantidad, double precioCosto, Compra compra, Producto producto) {
+    public DetalleCompra(int cantidad, double precioCosto, Compra compra, Producto producto) {
         this.cantidad = cantidad;
         this.precioCosto = precioCosto;
         this.compra = compra;
         this.producto = producto;
     }
 
-    public detalleCompra(int idDetalleCompra, int cantidad, double precioCosto, Compra compra, Producto producto) {
+    public DetalleCompra(int idDetalleCompra, int cantidad, double precioCosto, Compra compra, Producto producto) {
         this.idDetalleCompra = idDetalleCompra;
         this.cantidad = cantidad;
         this.precioCosto = precioCosto;
