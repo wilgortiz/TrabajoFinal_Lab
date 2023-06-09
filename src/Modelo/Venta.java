@@ -38,12 +38,14 @@ public class Venta {
         this.fecha = fecha;
     }
 
-    public Cliente getIdCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setIdCliente(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+   
     
 }
