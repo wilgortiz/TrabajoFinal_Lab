@@ -1,6 +1,8 @@
 package ClasesData;
 
 import Modelo.Cliente;
+import Modelo.DetalleCompra;
+import Modelo.DetalleVenta;
 import Modelo.Producto;
 import com.sun.org.apache.bcel.internal.generic.RETURN;
 import java.sql.Connection;
@@ -84,6 +86,33 @@ public class ProductoData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto " + ex.getMessage());
         }
         return productos;
+    }
+    
+    
+    public void incrementarStock (int idProducto, DetalleCompra compra, int stock){
+        String sql = "UPDATE producto SET stock= ?  WHERE producto.idProducto = ?;";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, stock + compra.getCantidad());
+            ps.setInt(2, idProducto);
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
+        }
+        
+    }
+    
+    public void decrementarStock (int idProducto, DetalleVenta venta, int stock){
+        String sql = "UPDATE producto SET stock= ?  WHERE producto.idProducto = ?;";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, stock - venta.getCantidad());
+            ps.setInt(2, idProducto);
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
+        }
+        
     }
 
 }
