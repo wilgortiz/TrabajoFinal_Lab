@@ -26,20 +26,23 @@ public class ProductoData {
 
     }
 
-    public void registrarProducto(Producto producto) {
-        String sql = "INSERT INTO producto(descripcion, precioActual, stock, estado) VALUES (?,?,?,?);";
+    public void registrarProducto(Producto pr) {
 
+        String sql = "INSERT INTO producto( precioActual, stock, estado, nombre, categoria, descripcion) VALUES (?,?,?,?,?,?);";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, producto.getDescripcion());
-            ps.setDouble(2, producto.getPrecioActual());
-            ps.setInt(3, producto.getStock());
-            ps.setBoolean(4, producto.isEstado());
+
+            ps.setDouble(1, pr.getPrecioActual());
+            ps.setInt(2, pr.getStock());
+            ps.setBoolean(3, true);
+            ps.setString(4, pr.getNombre());
+            ps.setString(5, pr.getCategoria());
+            ps.setString(6, pr.getDescripcion());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                producto.setIdProducto(rs.getInt("idProducto"));
+                pr.setIdProducto(rs.getInt("idProducto"));
                 JOptionPane.showMessageDialog(null, "Producto añadido con exito.");
             }
             ps.close();
@@ -60,25 +63,18 @@ public class ProductoData {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Producto producto = new Producto();
+                Producto pr = new Producto();
 
-                producto.setDescripcion(rs.getString("descripcion"));
-                producto.setIdProducto(rs.getInt("idProducto"));
-                producto.setPrecioActual(rs.getDouble("precioActual"));
-                producto.setStock(rs.getInt("stock"));
-                producto.setEstado(rs.getBoolean("estado"));
+                pr.setIdProducto(rs.getInt("idProducto"));
+                pr.setNombre(rs.getString("nombre"));
+                pr.setCategoria(rs.getString("categoria"));
+                pr.setDescripcion(rs.getString("descripcion"));
+                pr.setPrecioActual(rs.getDouble("precioActual"));
+                pr.setStock(rs.getInt("stock"));
+                pr.setEstado(rs.getBoolean("estado"));
 
-                productos.add(producto);
-                /*
-                
-                alumno.setId_alumno(rs.getInt("idAlumno"));
-                alumno.setDni(rs.getString("dni"));
-                alumno.setApellido(rs.getString("apellido"));
-                alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setEstado(rs.getBoolean("estado"));
-                alumnos.add(alumno);
-                 */
+                productos.add(pr);
+
             }
             ps.close();
 
@@ -87,78 +83,103 @@ public class ProductoData {
         }
         return productos;
     }
-    
-    public Producto buscarProducto(String descripcion){
-        Producto p = new Producto();
-        String sql = "SELECT FROM * producto WHERE descripcion = ?";
-        
+
+    public Producto buscarProducto(String nombre) {
+        Producto p = null; //   Alumno alumno = null;
+        String sql = "SELECT * FROM producto WHERE nombre=?";
+
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, descripcion);
-            
+            ps.setString(1, nombre);
+
             ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
-               
-               p.setIdProducto(rs.getInt("idProducto"));
-               p.setDescripcion(rs.getString("descripcion"));
-               p.setPrecioActual(rs.getDouble("precioActual"));
-               p.setStock(rs.getInt("stock"));
-               p.setEstado(rs.getBoolean("estado"));
+
+            while (rs.next()) {
+                p = new Producto();
+                p.setIdProducto(rs.getInt("idProducto"));
+                p.setNombre(rs.getString("nombre"));
+                p.setCategoria(rs.getString("categoria"));
+                p.setDescripcion(rs.getString("descripcion"));
+                p.setPrecioActual(rs.getDouble("precioActual"));
+                p.setStock(rs.getInt("stock"));
+                p.setEstado(rs.getBoolean("estado"));
             }
-            
+
             ps.close();
             rs.close();
-            
+
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto" + ex.getMessage());
         }
-        
+
         return p;
     }
+
+     public void eliminarProducto(String nombre) {
+        String sql = "DELETE FROM producto WHERE nombre=?";
+
+        PreparedStatement ps;
+
+        try {
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1, nombre);
+
+            int aux = ps.executeUpdate();
+            if (aux == 1) {
+                JOptionPane.showMessageDialog(null, "producto eliminado con exito");
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
+        }
+    }
     
-    public void incrementarStock (int idProducto, DetalleCompra compra, int stock){
+    
+    public void incrementarStock(int idProducto, DetalleCompra compra, int stock) {
         String sql = "UPDATE producto SET stock= ?  WHERE producto.idProducto = ?;";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, stock + compra.getCantidad());
             ps.setInt(2, idProducto);
-            
-             int exito = ps.executeUpdate();
-               
-               if (exito == 1){
-                   JOptionPane.showMessageDialog(null, "El stock se actualizo correctamente");
-               }else{
-                   JOptionPane.showMessageDialog(null, "Error al actualizar el stock");
-               }
-               ps.close();
-               
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "El stock se actualizo correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al actualizar el stock");
+            }
+            ps.close();
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
         }
-        
+
     }
-    
-    public void decrementarStock (int idProducto, DetalleVenta venta, int stock){
+
+    public void decrementarStock(int idProducto, DetalleVenta venta, int stock) {
         String sql = "UPDATE producto SET stock= ?  WHERE producto.idProducto = ?;";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, stock - venta.getCantidad());
             ps.setInt(2, idProducto);
-            
-             int exito = ps.executeUpdate();
-               
-               if (exito == 1){
-                   JOptionPane.showMessageDialog(null, "El stock se actualizo correctamente");
-               }else{
-                   JOptionPane.showMessageDialog(null, "Error al actualizar el stock");
-               }
-               ps.close();
-               
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "El stock se actualizo correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al actualizar el stock");
+            }
+            ps.close();
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
         }
-        
+
     }
 
 }
