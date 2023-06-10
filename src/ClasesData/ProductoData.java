@@ -103,6 +103,7 @@ public class ProductoData {
                }else{
                    JOptionPane.showMessageDialog(null, "Error al actualizar el stock");
                }
+               ps.close();
                
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
@@ -124,6 +125,7 @@ public class ProductoData {
                }else{
                    JOptionPane.showMessageDialog(null, "Error al actualizar el stock");
                }
+               ps.close();
                
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");

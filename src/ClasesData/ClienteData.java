@@ -42,6 +42,9 @@ public class ClienteData {
                     JOptionPane.showMessageDialog(null, "Cliente agregado con exito");
                 }
                 
+                rs.close();
+                ps.close();
+                
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente");
             
@@ -61,7 +64,10 @@ public class ClienteData {
               int aux = ps.executeUpdate();
               if(aux == 1){
                   JOptionPane.showMessageDialog(null,"Cliente eliminado con exito");
-                }              
+                }   
+              
+              ps.close();
+              
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente" + ex.getMessage());
         }
@@ -87,7 +93,7 @@ public class ClienteData {
                    JOptionPane.showMessageDialog(null, "Error al actualizar el cliente");
                }
                       
-                
+               ps.close();
                 
              
          } catch (SQLException ex) {

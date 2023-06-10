@@ -8,6 +8,7 @@ package ClasesData;
 import Modelo.DetalleCompra;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -34,7 +35,16 @@ public class DetalleCompraData {
             ps.setInt(3, detalle.getCompra().getIdCompra());
             ps.setInt(4, detalle.getProducto().getIdProducto());
             
-            ps.executeUpdate();
+            int aux = ps.executeUpdate();
+            
+            if(aux == 1){
+                JOptionPane.showMessageDialog(null, "Detalle de la compra registrado");
+            }else{
+                JOptionPane.showMessageDialog(null, "Fallo al registar el detalle de la compra");
+            }
+            
+            ps.close();
+            
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla detalle de compra");

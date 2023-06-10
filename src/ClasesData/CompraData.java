@@ -45,6 +45,8 @@ public class CompraData {
                 JOptionPane.showMessageDialog(null, "Compra generada");
             }
             
+            rs.close();
+            ps.close();
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla proveedor");
