@@ -36,15 +36,14 @@ public class ProveedorData {
 
     public void registrarProveedor(Proveedor provee) {
 
-        String sql = "INSERT INTO `proveedor`(`razonSocial`, `domicilio`, `telefono`) +"
-                + " VALUES ('?','?','?')";
+        String sql = "INSERT INTO proveedor(nombre, razonSocial, domicilio, telefono)   VALUES (?,?,?,?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
-            ps.setString(1, provee.getRazonSocial());
-            ps.setString(2, provee.getDomicilio());
-            ps.setInt(3, provee.getTelefono());
+            ps.setString(1, provee.getNombre());
+            ps.setString(2, provee.getRazonSocial());
+            ps.setString(3, provee.getDomicilio());
+            ps.setString(4, provee.getTelefono());
 
             ps.executeUpdate();
 
@@ -68,6 +67,3 @@ public class ProveedorData {
 
     }
 }
-
-    
-
