@@ -64,7 +64,7 @@ public class ProductoData {
 
                 producto.setDescripcion(rs.getString("descripcion"));
                 producto.setIdProducto(rs.getInt("idProducto"));
-                producto.setPrecioActual(rs.getDouble("PrecioActual"));
+                producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setEstado(rs.getBoolean("estado"));
 
@@ -88,6 +88,34 @@ public class ProductoData {
         return productos;
     }
     
+    public Producto buscarProducto(String descripcion){
+        Producto p = new Producto();
+        String sql = "SELECT FROM * producto WHERE descripcion = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, descripcion);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+               
+               p.setIdProducto(rs.getInt("idProducto"));
+               p.setDescripcion(rs.getString("descripcion"));
+               p.setPrecioActual(rs.getDouble("precioActual"));
+               p.setStock(rs.getInt("stock"));
+               p.setEstado(rs.getBoolean("estado"));
+            }
+            
+            ps.close();
+            rs.close();
+            
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
+        }
+        
+        return p;
+    }
     
     public void incrementarStock (int idProducto, DetalleCompra compra, int stock){
         String sql = "UPDATE producto SET stock= ?  WHERE producto.idProducto = ?;";
