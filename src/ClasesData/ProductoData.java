@@ -96,6 +96,14 @@ public class ProductoData {
             ps.setInt(1, stock + compra.getCantidad());
             ps.setInt(2, idProducto);
             
+             int exito = ps.executeUpdate();
+               
+               if (exito == 1){
+                   JOptionPane.showMessageDialog(null, "El stock se actualizo correctamente");
+               }else{
+                   JOptionPane.showMessageDialog(null, "Error al actualizar el stock");
+               }
+               
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
         }
@@ -109,6 +117,14 @@ public class ProductoData {
             ps.setInt(1, stock - venta.getCantidad());
             ps.setInt(2, idProducto);
             
+             int exito = ps.executeUpdate();
+               
+               if (exito == 1){
+                   JOptionPane.showMessageDialog(null, "El stock se actualizo correctamente");
+               }else{
+                   JOptionPane.showMessageDialog(null, "Error al actualizar el stock");
+               }
+               
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
         }
