@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -64,4 +66,23 @@ public class ClienteData {
            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente" + ex.getMessage());
         }
     }  
+   
+   public void modificarCliente(Cliente nuevoCliente, int idCliente){
+       String sql = "UPDATE cliente SET apellido=? , nombre=? , domicilio=?  ,telefono=? WHERE idCliente=?";
+       
+         try {
+             PreparedStatement ps =  con.prepareStatement(sql);
+             
+                ps.setString(1,nuevoCliente.getApellido());
+                ps.setString(2,nuevoCliente.getNombre());
+                ps.setString(3, nuevoCliente.getDomicilio());
+                ps.setString(4,nuevoCliente.getTelefono());
+                ps.setInt(5,idCliente);
+             
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente");
+         }
+       
+       
+   }
 }
