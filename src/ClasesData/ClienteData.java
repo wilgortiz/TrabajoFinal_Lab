@@ -78,9 +78,20 @@ public class ClienteData {
                 ps.setString(3, nuevoCliente.getDomicilio());
                 ps.setString(4,nuevoCliente.getTelefono());
                 ps.setInt(5,idCliente);
+                
+               int exito = ps.executeUpdate();
+               
+               if (exito == 1){
+                   JOptionPane.showMessageDialog(null, "El cliente se actualizo correctamente");
+               }else{
+                   JOptionPane.showMessageDialog(null, "Error al actualizar el cliente");
+               }
+                      
+                
+                
              
          } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente");
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente" + ex.getMessage());
          }
        
        
