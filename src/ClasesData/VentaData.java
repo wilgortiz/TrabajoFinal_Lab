@@ -5,6 +5,7 @@
  */
 package ClasesData;
 
+import Modelo.Cliente;
 import Modelo.Venta;
 import java.sql.Connection;
 import java.sql.Date;
@@ -12,6 +13,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -59,7 +63,36 @@ public class VentaData {
     }
     
     
-    
+    public List<Venta> listaVentas(){
+        
+        List<Venta> listaDeVentas = new ArrayList<>();
+        
+        String sql = "SELECT * FROM venta";
+         try {
+             PreparedStatement ps = con.prepareStatement(sql);
+             
+             ResultSet rs = ps.executeQuery();
+             
+             while (rs.next()) {
+               Venta v = new Venta();
+               Cliente c = new Cliente();
+               c.setIdCliente(rs.getInt("idCliente"));
+               
+               
+               v.setIdVenta(rs.getInt("idVenta"));
+               v.setFecha(rs.getDate("fecha").toLocalDate());
+               v.setCliente(c);
+               
+               listaDeVentas.add(v);
+             }
+             
+             
+         } catch (SQLException ex) {
+            
+         }
+        
+         return listaDeVentas;
+    } 
     
     
     
