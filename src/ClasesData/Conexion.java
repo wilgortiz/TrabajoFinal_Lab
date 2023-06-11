@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class Conexion {
 
     private static final String URL = "jdbc:mysql://localhost/";
-    private static final String DB = "fravemax";
+    private static final String DB = "fravemax_sql";
     private static final String USUARIO = "root";
     private static String PASSWORD = "";
 
@@ -30,7 +30,7 @@ public class Conexion {
 
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                // Setup the connection with the DB
+             
                 connection = DriverManager
                         .getConnection(URL + DB + "?useLegacyDatetimeCode=false&serverTimezone=UTC"
                                 + "&user=" + USUARIO + "&password=" + PASSWORD);

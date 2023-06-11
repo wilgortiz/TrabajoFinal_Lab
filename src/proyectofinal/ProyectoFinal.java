@@ -53,15 +53,14 @@ public class ProyectoFinal {
         } else {
             System.out.println("" + pD.buscarProducto("heladera samsung"));
         }
-          
-          //prueba eliminar producto
-          Producto p2 = new Producto("Microondas Philips", "Blanco", "Comedor", 4, 100000, true);
-          ProductoData pD2 = new ProductoData();
-          pD.registrarProducto(p2);
-          
-          pD.eliminarProducto("Microondas Philips");
-          
-          
+
+        //prueba eliminar producto
+        Producto p2 = new Producto("Microondas Philips", "Blanco", "Comedor", 4, 100000, true);
+        ProductoData pD2 = new ProductoData();
+        pD.registrarProducto(p2);
+
+        pD.eliminarProducto("Microondas Philips");
+
         //registrar compra a proveedores
         Proveedor pr = new Proveedor("wilgo sa", "monotributista", "ruta 147545", "26154541");
         ProveedorData pDA = new ProveedorData();
@@ -70,7 +69,7 @@ public class ProyectoFinal {
         Compra compra = new Compra(pr, LocalDate.parse("2023-06-06"));
         CompraData cDA = new CompraData();
         cDA.registrarCompra(compra, 1);
-        
+
         //detalle compra
         DetalleCompra dc = new DetalleCompra(1, 300000, compra, p1);
         DetalleCompraData dcD = new DetalleCompraData();
@@ -78,19 +77,15 @@ public class ProyectoFinal {
         pD.incrementarStock(1, dc, p1.getStock());
 
         //registrar venta
-        
         Producto p3 = new Producto("Horno Philips", "Blanco-200Wts", "Comedor", 100000, 2, true);
         ProductoData pD3 = new ProductoData();
         pD.registrarProducto(p3);
-
-       
 
         Venta venta = new Venta(LocalDate.parse("2023-06-06"), c2);
         VentaData vD = new VentaData();
         vD.registrarVenta(venta, 2);
 
 //        Detalle de venta DetalleVenta 
-       
         DetalleVenta dV = new DetalleVenta(1, 350000, venta, p1);
         DetalleVentaData dvD = new DetalleVentaData();
         dvD.registrarDetalleVenta(dV, 1, 1);
