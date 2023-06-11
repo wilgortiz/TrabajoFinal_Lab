@@ -34,13 +34,13 @@ public class VentaData {
 
     }
     
-    public void registrarVenta(Venta venta){
+    public void registrarVenta(Venta venta, int idCliente){
         String sql = "INSERT INTO venta(fecha, idCliente) VALUES (?,?);";
         
          try {
              PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
              ps.setDate(1, Date.valueOf(venta.getFecha()));
-             ps.setInt(2, venta.getCliente().getIdCliente());
+             ps.setInt(2, idCliente);
              
              ps.executeUpdate();
              
@@ -58,7 +58,7 @@ public class VentaData {
              
              
          } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla venta");
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla venta" + ex.getMessage());
          }
     }
     
@@ -93,6 +93,8 @@ public class VentaData {
         
          return listaDeVentas;
     } 
+    
+    
     
     
     

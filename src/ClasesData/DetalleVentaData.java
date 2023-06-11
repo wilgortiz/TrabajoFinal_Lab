@@ -24,15 +24,15 @@ public class DetalleVentaData {
         con = Conexion.getConexion();
     }
     
-    public void registrarDetalleVenta(DetalleVenta detalle){ //cree en productoData un metodo modificar producto, para que cuando compremos o vendamos ese producto se modifique stock
+    public void registrarDetalleVenta(DetalleVenta detalle, int idVenta, int idProducto){ //cree en productoData un metodo modificar producto, para que cuando compremos o vendamos ese producto se modifique stock
         String sql = "INSERT INTO detalleventa(cantidad, precioVenta, idVenta, idProducto) VALUES (?,?,?,?);";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, detalle.getCantidad());
             ps.setDouble(2, detalle.getPrecioVenta());
-            ps.setInt(3, detalle.getVenta().getIdVenta());
-            ps.setInt(4, detalle.getProducto().getIdProducto());
+            ps.setInt(3, idVenta);
+            ps.setInt(4, idProducto);
             
             int aux = ps.executeUpdate();
             
@@ -46,7 +46,7 @@ public class DetalleVentaData {
             
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla detalle de venta");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla detalle de venta" + ex.getMessage());
         }
         
         

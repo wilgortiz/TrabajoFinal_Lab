@@ -46,6 +46,13 @@ public class Venta {
         this.cliente = cliente;
     }
 
+    @Override
+    public String toString() {
+        return "Venta{" + "idVenta=" + idVenta + ", fecha=" + fecha + ", cliente=" + cliente + '}';
+    }
+    
+    
+
    
     
 }

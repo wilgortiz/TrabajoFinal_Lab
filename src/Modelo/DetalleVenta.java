@@ -65,5 +65,10 @@ public class DetalleVenta {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
+
+    @Override
+    public String toString() {
+        return "DetalleVenta{" + "idDetalleVenta=" + idDetalleVenta + ", cantidad=" + cantidad + ", precioVenta=" + precioVenta + ", venta=" + venta + ", producto=" + producto + '}';
+    }
             
 }

@@ -28,13 +28,13 @@ public class CompraData {
 
     }
 
-    public void registrarCompra(Compra compra, int id) {
+    public void registrarCompra(Compra compra, int idProveedor) {
 
         String sql = " INSERT INTO compra (idProveedor, fecha) VALUES (?,?) ";
         try {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, id);
+            ps.setInt(1, idProveedor);
             ps.setDate(2, Date.valueOf(compra.getFecha()));
 
             ps.executeUpdate();
@@ -50,7 +50,7 @@ public class CompraData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Compra"+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Compra"+ ex.getMessage());
 
         }
 

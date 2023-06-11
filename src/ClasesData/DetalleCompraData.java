@@ -26,14 +26,14 @@ public class DetalleCompraData {
 
     }
     
-    public void registrarDetalleCompra( DetalleCompra detalle){ //cree en productoData un metodo modificar producto, para que cuando compremos o vendamos ese producto se modifique stock
+    public void registrarDetalleCompra( DetalleCompra detalle, int idCompra, int idProducto){ //cree en productoData un metodo modificar producto, para que cuando compremos o vendamos ese producto se modifique stock
         String sql = "INSERT INTO detallecompra(cantidad, precioCosto, idCompra, idProducto) VALUES (?,?,?,?);";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, detalle.getCantidad());
             ps.setDouble(2, detalle.getPrecioCosto());
-            ps.setInt(3, detalle.getCompra().getIdCompra());
-            ps.setInt(4, detalle.getProducto().getIdProducto());
+            ps.setInt(3, idCompra);
+            ps.setInt(4, idProducto);
             
             int aux = ps.executeUpdate();
             
@@ -47,7 +47,7 @@ public class DetalleCompraData {
             
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla detalle de compra");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla detalle de compra" + ex.getMessage());
         }
         
         
