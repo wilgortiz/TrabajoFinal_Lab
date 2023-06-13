@@ -14,9 +14,9 @@ import javax.swing.JOptionPane;
  * @author 54266
  */
 public class RegistrarProducto extends javax.swing.JInternalFrame {
-
+    
     ProductoData pD;
-
+    
     public RegistrarProducto() {
         initComponents();
         pD = new ProductoData();
@@ -56,7 +56,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(3, 57, 112));
-        jLabel2.setText("Favemax");
+        jLabel2.setText("Fravemax");
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(3, 57, 112));
@@ -95,6 +95,11 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         btnSalir.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         btnSalir.setText("X");
         btnSalir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 0, 0), 1, true));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(3, 57, 112));
@@ -198,24 +203,29 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-
+        
         Producto p1;
         String nombre = jTextNombre.getText();
         String descripcion = jTextDescri.getText();
         String categoria = (String) comboCategoria.getSelectedItem();
-
+        
         try {
             double precio = Double.parseDouble(jTextPrecio.getText());
-            int stock = Integer.valueOf(jTextPrecio.getText());
+            int stock = Integer.valueOf(jTextStock.getText());
             p1 = new Producto(nombre, descripcion, categoria, precio, stock, true);
             pD.registrarProducto(p1);
-
+            limpiarRegistro();
+            
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ingrese un valor numerico para Precio o Stock");
         }
+        
 
-       
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -236,4 +246,11 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextPrecio;
     private javax.swing.JTextField jTextStock;
     // End of variables declaration//GEN-END:variables
+public void limpiarRegistro() {
+        jTextNombre.setText("");
+        jTextDescri.setText("");
+        jTextStock.setText("");
+        jTextPrecio.setText("");
+    }
+    
 }
