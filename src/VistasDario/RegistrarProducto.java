@@ -201,7 +201,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
        String nombre = jTextNombre.getText();
        String descripcion = jTextDescri.getText();
        String categoria = (String) comboCategoria.getSelectedItem();
-       double precio = Integer.valueOf(jTextPrecio.getText());
+       double precio = Double.parseDouble(jTextPrecio.getText());
        int stock = Integer.valueOf(jTextPrecio.getText());
        
         
