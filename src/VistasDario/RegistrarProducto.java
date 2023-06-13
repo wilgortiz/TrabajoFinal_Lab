@@ -7,6 +7,7 @@ package VistasDario;
 
 import ClasesData.ProductoData;
 import Modelo.Producto;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +15,11 @@ import Modelo.Producto;
  */
 public class RegistrarProducto extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Productos
-     */
+    ProductoData pD;
+
     public RegistrarProducto() {
         initComponents();
+        pD = new ProductoData();
     }
 
     /**
@@ -197,18 +198,23 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        
-       String nombre = jTextNombre.getText();
-       String descripcion = jTextDescri.getText();
-       String categoria = (String) comboCategoria.getSelectedItem();
-       double precio = Double.parseDouble(jTextPrecio.getText());
-       int stock = Integer.valueOf(jTextPrecio.getText());
+
+        Producto p1;
+        String nombre = jTextNombre.getText();
+        String descripcion = jTextDescri.getText();
+        String categoria = (String) comboCategoria.getSelectedItem();
+
+        try {
+            double precio = Double.parseDouble(jTextPrecio.getText());
+            int stock = Integer.valueOf(jTextPrecio.getText());
+            p1 = new Producto(nombre, descripcion, categoria, precio, stock, true);
+            pD.registrarProducto(p1);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ingrese un valor numerico para Precio o Stock");
+        }
+
        
-        
-        Producto p1 = new Producto(nombre, descripcion, categoria, precio, stock, true);
-        ProductoData pD = new ProductoData();
-        
-        pD.registrarProducto(p1);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
 
