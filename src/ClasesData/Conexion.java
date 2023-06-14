@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class Conexion {
 
     private static final String URL = "jdbc:mysql://localhost/";
-    private static final String DB = "fravemax_deprueba";
+    private static final String DB = "fravemax_sql";
     private static final String USUARIO = "root";
     private static String PASSWORD = "";
 

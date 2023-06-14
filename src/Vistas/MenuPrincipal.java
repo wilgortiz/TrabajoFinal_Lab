@@ -20,6 +20,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         itemRegistrarProv = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        menuRegistrar = new javax.swing.JMenuItem();
+        itemInventario = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
 
         jMenu4.setText("jMenu4");
@@ -36,7 +38,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGap(0, 441, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Cliente");
@@ -85,6 +87,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jMenu3ActionPerformed(evt);
             }
         });
+
+        menuRegistrar.setText("Registrar");
+        menuRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRegistrarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuRegistrar);
+
+        itemInventario.setText("Inventario");
+        itemInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemInventarioActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemInventario);
+
         jMenuBar1.add(jMenu3);
 
         jMenu6.setText("Venta");
@@ -152,6 +171,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(vP);
     }//GEN-LAST:event_itemRegistrarProvActionPerformed
 
+    private void menuRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegistrarActionPerformed
+        escritorio.removeAll(); //remover todo
+        escritorio.repaint(); //redibujar     
+
+        VistaRegistrarProducto rP = new   VistaRegistrarProducto();   //creamos la vista cliente
+        rP.setVisible(true); //hacemos visible esa vista
+
+        //agregamos y la llevamos al frente del escritorio
+        escritorio.add(rP);
+        escritorio.moveToFront(rP);
+    }//GEN-LAST:event_menuRegistrarActionPerformed
+
+    private void itemInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInventarioActionPerformed
+        escritorio.removeAll(); //remover todo
+        escritorio.repaint(); //redibujar     
+
+        VistaListaProductos lP = new   VistaListaProductos();   //creamos la vista cliente
+        lP.setVisible(true); //hacemos visible esa vista
+
+        //agregamos y la llevamos al frente del escritorio
+        escritorio.add(lP);
+        escritorio.moveToFront(lP);
+    }//GEN-LAST:event_itemInventarioActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -189,6 +232,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuProveedor;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem itemAgregarCliente;
+    private javax.swing.JMenuItem itemInventario;
     private javax.swing.JMenuItem itemRegistrarProv;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -197,5 +241,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem menuRegistrar;
     // End of variables declaration//GEN-END:variables
 }

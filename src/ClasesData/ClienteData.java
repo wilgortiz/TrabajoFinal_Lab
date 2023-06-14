@@ -138,8 +138,8 @@ public class ClienteData {
     
     
     
-    public void modificarCliente(Cliente nuevoCliente, String tel) {
-        String sql = "UPDATE cliente SET apellido=? , nombre=? , domicilio=? , telefono=? WHERE telefono=?";
+    public void modificarCliente(Cliente nuevoCliente, int idCliente) {
+        String sql = "UPDATE cliente SET apellido=? , nombre=? , domicilio=? , telefono=? WHERE idCliente=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -148,7 +148,7 @@ public class ClienteData {
             ps.setString(2, nuevoCliente.getNombre());
             ps.setString(3, nuevoCliente.getDomicilio());
             ps.setString(4, nuevoCliente.getTelefono());
-            ps.setString(5, tel);
+            ps.setInt(5, idCliente);
 
             int exito = ps.executeUpdate();
 
@@ -166,31 +166,31 @@ public class ClienteData {
 
     }
     
-    //HICE ESTA NUEVA, CON UN SOLO PARAMETRO.
-    public void modificarCliente(Cliente nuevoCliente) {
-    String sql = "UPDATE cliente SET apellido=?, nombre=?, domicilio=?, telefono=? ";
-
-    try {
-        PreparedStatement ps = con.prepareStatement(sql);
-
-        ps.setString(1, nuevoCliente.getApellido());
-        ps.setString(2, nuevoCliente.getNombre());
-        ps.setString(3, nuevoCliente.getDomicilio());
-        ps.setString(4, nuevoCliente.getTelefono());
-
-        int exito = ps.executeUpdate();
-
-        if (exito == 1) {
-            JOptionPane.showMessageDialog(null, "El cliente se actualizó correctamente");
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al actualizar el cliente");
-        }
-
-        ps.close();
-
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente: " + ex.getMessage());
-    }
+//    //HICE ESTA NUEVA, CON UN SOLO PARAMETRO.
+//    public void modificarCliente(Cliente nuevoCliente) {
+//    String sql = "UPDATE cliente SET apellido=?, nombre=?, domicilio=?, telefono=? ";
+//
+//    try {
+//        PreparedStatement ps = con.prepareStatement(sql);
+//
+//        ps.setString(1, nuevoCliente.getApellido());
+//        ps.setString(2, nuevoCliente.getNombre());
+//        ps.setString(3, nuevoCliente.getDomicilio());
+//        ps.setString(4, nuevoCliente.getTelefono());
+//
+//        int exito = ps.executeUpdate();
+//
+//        if (exito == 1) {
+//            JOptionPane.showMessageDialog(null, "El cliente se actualizó correctamente");
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Error al actualizar el cliente");
+//        }
+//
+//        ps.close();
+//
+//    } catch (SQLException ex) {
+//        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente: " + ex.getMessage());
+//    }
 }
 
-}
+
