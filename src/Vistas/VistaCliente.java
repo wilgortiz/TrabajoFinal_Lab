@@ -280,14 +280,18 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
     private void botonModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarClienteActionPerformed
 
-       
+        
 
         Cliente c1 = new Cliente(textoapellidoCliente.getText(),
                 textonombreCliente.getText(), textodomicilioCliente.getText(),
                 textotelefonoCliente.getText());
+        
         vc.modificarCliente(c1);
         limpiar();
 
+        
+        
+        
 // Cliente c1 = new (id, textoDni.getText(), textoApellido.getText(), textoNombre.getText(), LocalDate.parse(textoFecha.getText()), estado);
 //        aD.modificarAlumno(a1);
 

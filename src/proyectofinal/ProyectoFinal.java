@@ -26,7 +26,7 @@ public class ProyectoFinal {
      */
     public static void main(String[] args) {
 
-//        prueba de producto y cliente. funciona bien. 
+        //prueba de producto y cliente. funciona bien. 
         Producto p1 = new Producto("Heladera Samsung", "Plateada", "Comedor", 5, 300000, true);
         ProductoData pD = new ProductoData();
         pD.registrarProducto(p1);
@@ -46,7 +46,7 @@ public class ProyectoFinal {
         //prueba de inventario y busqueda de productos
         System.out.println(pD.listarProductos());
         pD.buscarProducto("heladera samsung");
-//       System.out.println("el prod buscado es "+pD.buscarProducto("Heladera "));
+        //System.out.println("el prod buscado es "+pD.buscarProducto("Heladera "));
 
         if (pD.buscarProducto("heladera samsung") == null) {
             System.out.println("no existe ese producto");
@@ -85,15 +85,16 @@ public class ProyectoFinal {
         VentaData vD = new VentaData();
         vD.registrarVenta(venta, 2);
 
-//        Detalle de venta DetalleVenta 
+        //Detalle de venta DetalleVenta 
         DetalleVenta dV = new DetalleVenta(1, 350000, venta, p1);
         DetalleVentaData dvD = new DetalleVentaData();
         dvD.registrarDetalleVenta(dV, 1, 1);
         pD.decrementarStock(1, dV, p1.getStock());
 
-//        consultar ventas 
+        //consultar ventas 
         System.out.println("VENTAS REALIZADAS:\n " + vD.listaVentas().toString());
 
     }
+      
+    }
 
-}
