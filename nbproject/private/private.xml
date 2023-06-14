@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/54266/Documents/NetBeansProjects/TrabajoFinal_Lab/src/ClasesData/ProveedorData.java</file>
-            <file>file:/C:/Users/54266/Documents/NetBeansProjects/TrabajoFinal_Lab/src/ClasesData/VentaData.java</file>
-            <file>file:/C:/Users/54266/Documents/NetBeansProjects/TrabajoFinal_Lab/src/ClasesData/CompraData.java</file>
-            <file>file:/C:/Users/54266/Documents/NetBeansProjects/TrabajoFinal_Lab/src/ClasesData/DetalleCompraData.java</file>
-            <file>file:/C:/Users/54266/Documents/NetBeansProjects/TrabajoFinal_Lab/src/ClasesData/DetalleVentaData.java</file>
-            <file>file:/C:/Users/54266/Documents/NetBeansProjects/TrabajoFinal_Lab/src/ClasesData/ClienteData.java</file>
-            <file>file:/C:/Users/54266/Documents/NetBeansProjects/TrabajoFinal_Lab/src/ClasesData/ProductoData.java</file>
+            <file>file:/C:/Users/wilgortiz/Documents/GitHub/TrabajoFinal_Lab/src/Vistas/VistaCliente.java</file>
+            <file>file:/C:/Users/wilgortiz/Documents/GitHub/TrabajoFinal_Lab/src/ClasesData/ProveedorData.java</file>
+            <file>file:/C:/Users/wilgortiz/Documents/GitHub/TrabajoFinal_Lab/src/ClasesData/ClienteData.java</file>
+            <file>file:/C:/Users/wilgortiz/Documents/GitHub/TrabajoFinal_Lab/src/ClasesData/Conexion.java</file>
+            <file>file:/C:/Users/wilgortiz/Documents/GitHub/TrabajoFinal_Lab/src/Vistas/MenuPrincipal.java</file>
+            <file>file:/C:/Users/wilgortiz/Documents/GitHub/TrabajoFinal_Lab/src/Vistas/VistaAgregarClientes.java</file>
+            <file>file:/C:/Users/wilgortiz/Documents/GitHub/TrabajoFinal_Lab/src/Vistas/VistaRegistrarProveedor.java</file>
         </group>
     </open-files>
 </project-private>
