@@ -11,6 +11,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -23,8 +24,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuRegistrar = new javax.swing.JMenuItem();
         itemInventario = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
+        itemRegistrarVenta = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,6 +111,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu6.setText("Venta");
+        jMenu6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu6ActionPerformed(evt);
+            }
+        });
+
+        itemRegistrarVenta.setText("Registrar");
+        itemRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegistrarVentaActionPerformed(evt);
+            }
+        });
+        jMenu6.add(itemRegistrarVenta);
+
         jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
@@ -140,7 +158,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-
+        
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void itemAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarClienteActionPerformed
@@ -195,6 +213,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(lP);
     }//GEN-LAST:event_itemInventarioActionPerformed
 
+    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
+//        escritorio.removeAll(); //remover todo
+//        escritorio.repaint(); //redibujar     
+//
+//        VistaListaProductos lP = new   VistaListaProductos();   //creamos la vista cliente
+//        lP.setVisible(true); //hacemos visible esa vista
+//
+//        //agregamos y la llevamos al frente del escritorio
+//        escritorio.add(lP);
+//        escritorio.moveToFront(lP);
+    }//GEN-LAST:event_jMenu6ActionPerformed
+
+    private void itemRegistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarVentaActionPerformed
+       
+        escritorio.removeAll(); //remover todo
+        escritorio.repaint(); //redibujar     
+
+        VistaVentas vV = new VistaVentas();   //creamos la vista cliente
+        vV.setVisible(true); //hacemos visible esa vista
+
+        //agregamos y la llevamos al frente del escritorio
+        escritorio.add(vV);
+        escritorio.moveToFront(vV);
+    }//GEN-LAST:event_itemRegistrarVentaActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -234,6 +277,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemAgregarCliente;
     private javax.swing.JMenuItem itemInventario;
     private javax.swing.JMenuItem itemRegistrarProv;
+    private javax.swing.JMenuItem itemRegistrarVenta;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -241,6 +285,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem menuRegistrar;
     // End of variables declaration//GEN-END:variables
 }
