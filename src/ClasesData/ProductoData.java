@@ -181,5 +181,34 @@ public class ProductoData {
         }
 
     }
+    
+    public void modificarProducto(Producto p){
+         String sql = "UPDATE producto SET nombre=? , descripcion=? , categoria=? , precioActual=?, stock=?, estado=? WHERE idProducto=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, p.getNombre());
+            ps.setString(2, p.getDescripcion());
+            ps.setString(3, p.getCategoria());
+            ps.setDouble(4, p.getPrecioActual());
+            ps.setInt(5, p.getStock());
+            ps.setBoolean(6, p.isEstado());
+            ps.setInt(7, p.getIdProducto());
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "El Producto se actualizo correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al actualizar el Producto");
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
+        }
+    }
 
 }
