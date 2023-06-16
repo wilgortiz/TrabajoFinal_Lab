@@ -188,7 +188,7 @@ public class VistaAgregarClientes extends javax.swing.JInternalFrame {
             //        } else if (checkInactivo.isSelected()) {
             //            estado = false;
             //        }
-        Cliente c1 = new Cliente( textodomicilioCliente.getText(), textonombreCliente.getText(), textoapellidoCliente.getText(), textotelefonoCliente.getText());
+        Cliente c1 = new Cliente( textoapellidoCliente.getText(), textonombreCliente.getText(), textodomicilioCliente.getText(), textotelefonoCliente.getText());
 
         //agregamos el cliente
         vc2.agregarCliente(c1);

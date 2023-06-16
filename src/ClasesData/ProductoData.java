@@ -86,14 +86,14 @@ public class ProductoData {
 
     public Producto buscarProducto(String nombre) {
         Producto p = null; //   Alumno alumno = null;
-        String sql = "SELECT * FROM producto WHERE nombre=?";
+        String sql = "SELECT * FROM producto WHERE nombre=? AND stock > 0";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
 
             ResultSet rs = ps.executeQuery();
-
+            
             while (rs.next()) {
                 p = new Producto();
                 p.setIdProducto(rs.getInt("idProducto"));

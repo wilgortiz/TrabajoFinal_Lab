@@ -51,6 +51,8 @@ public class DetalleVentaData {
         
         
     }
-    
+
 }
+
+
 //int idDetalleVenta, int cantidad, double precioVenta, Venta venta, Producto producto

@@ -34,7 +34,7 @@ public class VentaData {
 
     }
     
-    public void registrarVenta(Venta venta, int idCliente){
+    public int registrarVenta(Venta venta, int idCliente){
         String sql = "INSERT INTO venta(fecha, idCliente) VALUES (?,?);";
         
          try {
@@ -60,6 +60,8 @@ public class VentaData {
          } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, "Error al acceder a la tabla venta" + ex.getMessage());
          }
+         
+         return venta.getIdVenta();
     }
     
     
@@ -93,7 +95,6 @@ public class VentaData {
         
          return listaDeVentas;
     } 
-    
     
     
     
