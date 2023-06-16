@@ -73,15 +73,15 @@ public class VistaVentas extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 230, 0));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel2.setForeground(new java.awt.Color(3, 57, 112));
         jLabel2.setText("Cliente");
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel3.setForeground(new java.awt.Color(3, 57, 112));
         jLabel3.setText("Fecha");
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel5.setForeground(new java.awt.Color(3, 57, 112));
         jLabel5.setText("Producto");
 
         btnVender.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -142,12 +142,12 @@ public class VistaVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 102));
         jLabel6.setText("Registrar Ventas");
 
         jLabel7.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel7.setForeground(new java.awt.Color(3, 57, 112));
         jLabel7.setText("Cantidad:");
 
         textoProducto1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

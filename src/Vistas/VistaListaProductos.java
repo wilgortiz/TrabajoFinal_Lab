@@ -48,7 +48,7 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        panel.setBackground(new java.awt.Color(255, 255, 0));
+        panel.setBackground(new java.awt.Color(255, 230, 0));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(3, 57, 112));
