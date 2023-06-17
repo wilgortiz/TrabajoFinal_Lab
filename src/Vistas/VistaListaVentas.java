@@ -180,9 +180,11 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
 
         for (Venta aux : ventas) {
             Cliente c1 = cD.buscarCliente(aux.getCliente().getIdCliente());
-            Venta v1 = venData.buscarVentaPorID(aux.getIdVenta());
             
-            DetalleVenta dv1 = dV.buscarDetalle(v1.getIdVenta());
+            
+            DetalleVenta dv1 = dV.buscarDetalle(aux.getIdVenta());
+            
+            
 
             
             modelo.addRow(new Object[]{aux.getIdVenta(), aux.getFecha(), c1.getNombre(), c1.getApellido(), c1.getTelefono(),dv1.getProducto().getNombre(),dv1.getCantidad(), dv1.getPrecioVenta()}); 
