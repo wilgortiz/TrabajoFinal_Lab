@@ -7,6 +7,7 @@ package Vistas;
 import ClasesData.*;
 import Modelo.*;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -221,7 +222,7 @@ public class VistaVentas extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,7 +284,46 @@ public class VistaVentas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void textoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoClienteActionPerformed
-        // TODO add your handling code here:
+        
+       
+//    // Obtener el texto ingresado por el usuario
+//    String textoIngresado = textoCliente.getText();
+//
+//    // Aquí puedes realizar las operaciones necesarias con el texto ingresado
+//    // por ejemplo, imprimirlo en la consola o utilizarlo en otro cálculo
+//
+//    // Ejemplo: Imprimir el texto ingresado
+//    System.out.println("Texto ingresado: " + textoIngresado);
+
+       
+  
+    // Obtener el texto ingresado por el usuario
+   
+
+    // Realizar la búsqueda del cliente por nombre
+//    Cliente cliente =cD.buscarClientePorNombre(textoCliente);
+
+    String nombre = null;
+    cliente = cD.buscarClientePorNombre(textoCliente.getText().toLowerCase());
+
+    // Limpiar el modelo de la tabla
+    modelo.setRowCount(0);
+
+    // Agregar el cliente a la tabla si se encontró
+    if (cliente != null) {
+        Object[] fila = new Object[5];
+        fila[0] = cliente.getIdCliente();
+        fila[1] = cliente.getNombre();
+        fila[2] = cliente.getApellido();
+        fila[3] = cliente.getDomicilio();
+        fila[4] = cliente.getTelefono();
+        modelo.addRow(fila);
+    }
+
+    // Actualizar la vista de la tabla
+    tablaCliente.setModel(modelo);
+
+
     }//GEN-LAST:event_textoClienteActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
