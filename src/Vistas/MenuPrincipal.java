@@ -184,7 +184,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.removeAll(); //remover todo
         escritorio.repaint(); //redibujar     
 
-        VistaAgregarClientes vcl2 = new VistaAgregarClientes();   //creamos la vista cliente
+        VistaAgregClientes vcl2 = new VistaAgregClientes();   //creamos la vista cliente
         vcl2.setVisible(true); //hacemos visible esa vista
 
         //agregamos y la llevamos al frente del escritorio
