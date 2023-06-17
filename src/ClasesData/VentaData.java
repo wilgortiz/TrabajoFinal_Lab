@@ -108,9 +108,10 @@ public class VentaData {
             
             while (rs.next()) {
                 v = new Venta();
-               
+                ClienteData cD= new ClienteData();
                
                 v.setIdVenta(rs.getInt("idVenta"));
+                v.setCliente(cD.buscarCliente(rs.getInt("idCliente")));
                
             }
 

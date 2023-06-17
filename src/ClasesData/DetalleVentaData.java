@@ -75,9 +75,13 @@ public class DetalleVentaData {
             
             if(rs.next()){
                 detV = new DetalleVenta();
+                
                 detV.setIdDetalleVenta(rs.getInt("idDetalleVenta"));
                 detV.setCantidad(rs.getInt("cantidad"));
                 detV.setPrecioVenta(rs.getInt("precioVenta"));
+                detV.setVenta(vData.buscarVentaPorID(rs.getInt("idVenta")));
+                detV.setProducto(pData.buscarProductoPorID(rs.getInt("idProducto")));
+                
                 
             }
             
