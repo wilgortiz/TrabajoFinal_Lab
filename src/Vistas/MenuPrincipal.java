@@ -23,8 +23,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         menuRegistrar = new javax.swing.JMenuItem();
         itemInventario = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        itemRegistrarVenta = new javax.swing.JMenuItem();
+        itemRegistro = new javax.swing.JMenu();
+        itemRegistrar = new javax.swing.JMenuItem();
+        itemRegistroLista = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
 
@@ -110,22 +111,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu6.setText("Venta");
-        jMenu6.addActionListener(new java.awt.event.ActionListener() {
+        itemRegistro.setText("Venta");
+        itemRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu6ActionPerformed(evt);
+                itemRegistroActionPerformed(evt);
             }
         });
 
-        itemRegistrarVenta.setText("Registrar");
-        itemRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
+        itemRegistrar.setText("Registrar");
+        itemRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemRegistrarVentaActionPerformed(evt);
+                itemRegistrarActionPerformed(evt);
             }
         });
-        jMenu6.add(itemRegistrarVenta);
+        itemRegistro.add(itemRegistrar);
 
-        jMenuBar1.add(jMenu6);
+        itemRegistroLista.setText("Registro de Ventas");
+        itemRegistroLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegistroListaActionPerformed(evt);
+            }
+        });
+        itemRegistro.add(itemRegistroLista);
+
+        jMenuBar1.add(itemRegistro);
 
         setJMenuBar(jMenuBar1);
 
@@ -213,19 +222,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(lP);
     }//GEN-LAST:event_itemInventarioActionPerformed
 
-    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
-//        escritorio.removeAll(); //remover todo
-//        escritorio.repaint(); //redibujar     
-//
-//        VistaListaProductos lP = new   VistaListaProductos();   //creamos la vista cliente
-//        lP.setVisible(true); //hacemos visible esa vista
-//
-//        //agregamos y la llevamos al frente del escritorio
-//        escritorio.add(lP);
-//        escritorio.moveToFront(lP);
-    }//GEN-LAST:event_jMenu6ActionPerformed
+    private void itemRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistroActionPerformed
+        escritorio.removeAll(); //remover todo
+        escritorio.repaint(); //redibujar     
 
-    private void itemRegistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarVentaActionPerformed
+        VistaListaVentas lV = new   VistaListaVentas();   //creamos la vista cliente
+        lV.setVisible(true); //hacemos visible esa vista
+
+        //agregamos y la llevamos al frente del escritorio
+        escritorio.add(lV);
+        escritorio.moveToFront(lV);
+    }//GEN-LAST:event_itemRegistroActionPerformed
+
+    private void itemRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarActionPerformed
        
         escritorio.removeAll(); //remover todo
         escritorio.repaint(); //redibujar     
@@ -236,7 +245,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //agregamos y la llevamos al frente del escritorio
         escritorio.add(vV);
         escritorio.moveToFront(vV);
-    }//GEN-LAST:event_itemRegistrarVentaActionPerformed
+    }//GEN-LAST:event_itemRegistrarActionPerformed
+
+    private void itemRegistroListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistroListaActionPerformed
+         escritorio.removeAll(); //remover todo
+        escritorio.repaint(); //redibujar     
+
+        VistaListaVentas lV = new   VistaListaVentas();   //creamos la vista cliente
+        lV.setVisible(true); //hacemos visible esa vista
+
+        //agregamos y la llevamos al frente del escritorio
+        escritorio.add(lV);
+        escritorio.moveToFront(lV);
+    }//GEN-LAST:event_itemRegistroListaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -276,13 +297,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem itemAgregarCliente;
     private javax.swing.JMenuItem itemInventario;
+    private javax.swing.JMenuItem itemRegistrar;
     private javax.swing.JMenuItem itemRegistrarProv;
-    private javax.swing.JMenuItem itemRegistrarVenta;
+    private javax.swing.JMenu itemRegistro;
+    private javax.swing.JMenuItem itemRegistroLista;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;

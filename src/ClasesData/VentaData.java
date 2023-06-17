@@ -96,7 +96,33 @@ public class VentaData {
          return listaDeVentas;
     } 
     
+    public Venta buscarVentaPorID (int idVenta){
+        Venta v = null;
+        String sql = "SELECT * FROM Venta WHERE idVenta=?";
+            
+           try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idVenta);
+
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                v = new Venta();
+               
+               
+                v.setIdVenta(rs.getInt("idVenta"));
+               
+            }
+
+            ps.close();
+            rs.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta" + ex.getMessage());
+        }
     
+    return v;
+    }
     
     
     

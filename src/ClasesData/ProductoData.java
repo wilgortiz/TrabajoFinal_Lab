@@ -114,6 +114,37 @@ public class ProductoData {
 
         return p;
     }
+    
+    public Producto buscarProductoPorID (int idProducto){
+        Producto p = null;
+        String sql = "SELECT * FROM producto WHERE idProducto=?";
+            
+           try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idProducto);
+
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                p = new Producto();
+                p.setIdProducto(rs.getInt("idProducto"));
+                p.setNombre(rs.getString("nombre"));
+                p.setCategoria(rs.getString("categoria"));
+                p.setDescripcion(rs.getString("descripcion"));
+                p.setPrecioActual(rs.getDouble("precioActual"));
+                p.setStock(rs.getInt("stock"));
+                p.setEstado(rs.getBoolean("estado"));
+            }
+
+            ps.close();
+            rs.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto" + ex.getMessage());
+        }
+
+        return p;
+    }
 
      public void eliminarProducto(String nombre) {
         String sql = "DELETE FROM producto WHERE nombre=?";

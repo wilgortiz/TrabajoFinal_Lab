@@ -6,8 +6,11 @@
 package ClasesData;
 
 import Modelo.DetalleVenta;
+import Modelo.Producto;
+import Modelo.Venta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -18,10 +21,17 @@ import javax.swing.JOptionPane;
 public class DetalleVentaData {
     
     private Connection con = null;
+    private ProductoData pData;
+    private VentaData vData;
 
     public DetalleVentaData() {
 
         con = Conexion.getConexion();
+        
+        pData = new ProductoData();
+        vData = new VentaData();
+        
+        
     }
     
     public void registrarDetalleVenta(DetalleVenta detalle, int idVenta, int idProducto){ //cree en productoData un metodo modificar producto, para que cuando compremos o vendamos ese producto se modifique stock
@@ -50,6 +60,35 @@ public class DetalleVentaData {
         }
         
         
+    }
+    public DetalleVenta buscarDetalle(int idVenta){
+        
+      DetalleVenta detV = null;
+        
+        String sql = "SELECT idDetalleVenta, cantidad, precioVenta, idVenta, idProducto FROM detalleventa WHERE idVenta =?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idVenta);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                detV = new DetalleVenta();
+                detV.setIdDetalleVenta(rs.getInt("idDetalleVenta"));
+                detV.setCantidad(rs.getInt("cantidad"));
+                detV.setPrecioVenta(rs.getInt("precioVenta"));
+                
+            }
+            
+            ps.close();
+            rs.close();
+            
+            
+        } catch (SQLException ex) {
+            
+        }
+       return detV;
     }
 
 }
