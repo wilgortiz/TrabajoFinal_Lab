@@ -86,7 +86,7 @@ public class ProductoData {
 
     public Producto buscarProducto(String nombre) {
         Producto p = null; //   Alumno alumno = null;
-        String sql = "SELECT * FROM producto WHERE nombre=? AND stock > 0";
+        String sql = "SELECT * FROM producto WHERE nombre=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);

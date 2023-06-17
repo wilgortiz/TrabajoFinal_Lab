@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 public class DetalleCompraData {
     
      private Connection con = null;
-     private DetalleCompraData detCD;
+    
      private CompraData cData;
      private ProductoData pData;
      
@@ -29,7 +29,7 @@ public class DetalleCompraData {
     public DetalleCompraData() {
 
         con = Conexion.getConexion();
-        detCD= new DetalleCompraData();
+       
         cData = new CompraData();
         pData = new ProductoData();
 

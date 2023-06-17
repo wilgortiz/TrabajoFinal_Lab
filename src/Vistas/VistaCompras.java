@@ -7,6 +7,8 @@ package Vistas;
 
 import Modelo.*;
 import ClasesData.*;
+import com.sun.xml.internal.ws.util.xml.CDATA;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,13 +18,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaCompras extends javax.swing.JInternalFrame {
 
-   private DefaultTableModel modelo;
-   private ArrayList<Proveedor> listaProveedores;
-   private ArrayList<Producto> listaProductos;
-   private ProveedorData proveD;
-   private ProductoData produD;
-   
-   
+    private DefaultTableModel modelo;
+    private ArrayList<Proveedor> listaProveedores;
+    private ArrayList<Producto> listaProductos;
+    private ProveedorData proveD;
+    private ProductoData produD;
+    private CompraData cD;
+    private DetalleCompraData detalleCD;
+
+    private Compra compra;
+    private Proveedor proveedor;
+    private DetalleCompra detalleCompra;
+    private Producto producto;
+
     public VistaCompras() {
         initComponents();
         modelo = new DefaultTableModel();
@@ -30,7 +38,13 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         listaProductos = new ArrayList<>();
         proveD = new ProveedorData();
         produD = new ProductoData();
-        
+        cD = new CompraData();
+        detalleCD = new DetalleCompraData();
+        compra = new Compra();
+        proveedor = new Proveedor();
+        detalleCompra = new DetalleCompra();
+        producto = new Producto();
+
         cargarCombo();
         crearTabla();
         cargarTabla();
@@ -58,7 +72,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         botonFiltrar = new javax.swing.JButton();
         botonComprar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        textoCantidad = new javax.swing.JTextField();
 
         jLabel4.setText("jLabel4");
 
@@ -115,6 +129,11 @@ public class VistaCompras extends javax.swing.JInternalFrame {
 
         botonComprar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         botonComprar.setText("Comprar");
+        botonComprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonComprarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 102));
@@ -145,18 +164,17 @@ public class VistaCompras extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(239, 239, 239)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(15, 15, 15)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(239, 239, 239)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(15, 15, 15))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGap(162, 162, 162)
                                 .addComponent(comboProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -169,7 +187,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
                 .addGap(208, 208, 208)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textoCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -196,7 +214,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(botonComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -220,16 +238,44 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void cargarCombo(){
-        listaProveedores = (ArrayList<Proveedor>) proveD.listarProveedores();
+    private void botonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComprarActionPerformed
+        //TOMAR PROVEEDOR DEL COMBO
+        proveedor = (Proveedor) comboProveedores.getSelectedItem();
+
+        String date = "2023-06-15";
+        LocalDate fecha = LocalDate.parse(date);
+
+        //REGISTRAR COMPRA
+        compra = new Compra(proveedor, fecha);
+        int idCompra = cD.registrarCompra(compra, proveedor.getIdProveedor()); //recuperar id compra al mismo tiempo q registro compra del resultset
+        compra.setIdCompra(idCompra);
+        //OBTENER VALORES DE LA FILA SELECCIONADA DE LA TABLA
+        String nombre = (String) modelo.getValueAt(tablaProductos.getSelectedRow(), 0);
+        producto = produD.buscarProducto(nombre);
+
+        //REGISTRAR DETALLE DE COMPRA
+        int cantidad = Integer.parseInt(textoCantidad.getText());
+        detalleCompra = new DetalleCompra(cantidad, producto.getPrecioActual() * cantidad, compra, producto);
+        detalleCD.registrarDetalleCompra(detalleCompra, idCompra, producto.getIdProducto());
+        //INCREMENTAR STOCK
         
+        produD.incrementarStock(producto.getIdProducto(), detalleCompra, producto.getStock());
+        LimpiarTabla();
+        cargarTabla();
+
+
+    }//GEN-LAST:event_botonComprarActionPerformed
+
+    private void cargarCombo() {
+        listaProveedores = (ArrayList<Proveedor>) proveD.listarProveedores();
+
         for (Proveedor aux : listaProveedores) {
-            comboProveedores.addItem(aux.getNombre() + "-" + aux.getDomicilio());
+            comboProveedores.addItem(aux);
         }
     }
-    
-    private void cargarTabla(){
-         listaProductos =  (ArrayList<Producto>) produD.listarProductos();
+
+    private void cargarTabla() {
+        listaProductos = (ArrayList<Producto>) produD.listarProductos();
 
         for (Producto aux : listaProductos) {
 
@@ -243,12 +289,12 @@ public class VistaCompras extends javax.swing.JInternalFrame {
             modelo.addRow(new Object[]{aux.getNombre(), aux.getDescripcion(), aux.getCategoria(), aux.getPrecioActual(), aux.getStock(), estado});  //cremos la fila de la tabla agregandole valor a sus 3 columnas
         }
     }
-    
-    private void crearTabla(){
+
+    private void crearTabla() {
         //para cargar los datos de inscripcion a la tabla
         //columnas:
         ArrayList<Object> columnas = new ArrayList<Object>();
-        
+
         columnas.add("Nombre");
         columnas.add("Descripcion");
         columnas.add("Categoria");
@@ -262,12 +308,20 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         tablaProductos.setModel(modelo); //le setemos por ultimo el modelo a la tabla
     }
     
-    
+     private void LimpiarTabla() {
+        int filas = modelo.getRowCount() - 1; //saber cantidad de filas
+
+        for (int i = filas; i >= 0; i--) {   //recorre para borralas una x una
+            modelo.removeRow(i);
+        }
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonComprar;
     private javax.swing.JButton botonFiltrar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> comboProveedores;
+    private javax.swing.JComboBox<Proveedor> comboProveedores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -278,7 +332,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tablaProductos;
+    private javax.swing.JTextField textoCantidad;
     // End of variables declaration//GEN-END:variables
 }

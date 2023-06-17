@@ -30,7 +30,7 @@ public class CompraData {
 
     }
 
-    public void registrarCompra(Compra compra, int idProveedor) {
+    public int registrarCompra(Compra compra, int idProveedor) {
 
         String sql = " INSERT INTO compra (idProveedor, fecha) VALUES (?,?) ";
         try {
@@ -55,7 +55,7 @@ public class CompraData {
             JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Compra"+ ex.getMessage());
 
         }
-
+       return compra.getIdCompra();
     }
     
     public Compra buscarCompraPorID (int idCompra){
