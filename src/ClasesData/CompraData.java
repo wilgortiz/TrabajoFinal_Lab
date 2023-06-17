@@ -21,10 +21,12 @@ import javax.swing.JOptionPane;
 public class CompraData {
 
     private Connection con = null;
+    private ProveedorData proveData;
 
     public CompraData() {
 
         con = Conexion.getConexion();
+        proveData = new ProveedorData();
 
     }
 
@@ -54,5 +56,34 @@ public class CompraData {
 
         }
 
+    }
+    
+    public Compra buscarCompraPorID (int idCompra){
+        Compra c = null;
+        String sql = "SELECT * FROM Compra WHERE idCompra=?";
+            
+           try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idCompra);
+
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                c = new Compra();
+                ClienteData cD= new ClienteData();
+               
+                c.setIdCompra(rs.getInt("idVenta"));
+                c.setProveedorC(proveData.buscarProveedorPorID(rs.getInt("idProveedor"))); //buscar proveedor
+               
+            }
+
+            ps.close();
+            rs.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Compra" + ex.getMessage());
+        }
+    
+    return c;
     }
 }

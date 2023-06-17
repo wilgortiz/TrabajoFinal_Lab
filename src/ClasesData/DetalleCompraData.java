@@ -6,6 +6,8 @@
 package ClasesData;
 
 import Modelo.DetalleCompra;
+import Modelo.DetalleVenta;
+import Modelo.Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,10 +21,17 @@ import javax.swing.JOptionPane;
 public class DetalleCompraData {
     
      private Connection con = null;
+     private DetalleCompraData detCD;
+     private CompraData cData;
+     private ProductoData pData;
+     
 
     public DetalleCompraData() {
 
         con = Conexion.getConexion();
+        detCD= new DetalleCompraData();
+        cData = new CompraData();
+        pData = new ProductoData();
 
     }
     
@@ -52,5 +61,40 @@ public class DetalleCompraData {
         
         
     }
+    
+     public DetalleCompra buscarDetalleCompra(int idCompra){
+        
+      DetalleCompra detC = null;
+        
+        String sql = "SELECT idDetalle, cantidad, precioCosto, idCompra, idProducto FROM detallecompra WHERE idCompra =?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idCompra);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                detC = new DetalleCompra();
+                
+                detC.setIdDetalleCompra(rs.getInt("idDetalle"));
+                detC.setCantidad(rs.getInt("cantidad"));
+                detC.setPrecioCosto(rs.getInt("precioCosto"));
+                detC.setCompra(cData.buscarCompraPorID(rs.getInt("idCompra")));
+                detC.setProducto(pData.buscarProductoPorID(rs.getInt("idProducto")));
+                
+                
+            }
+            
+            ps.close();
+            rs.close();
+            
+            
+        } catch (SQLException ex) {
+            
+        }
+       return detC;
+    }
+
 
 }

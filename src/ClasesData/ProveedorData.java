@@ -95,4 +95,34 @@ public class ProveedorData {
         return proveedores;
     }
     
+     public Proveedor buscarProveedorPorID (int idProveedor){
+        Proveedor p = null;
+        String sql = "SELECT * FROM proveedor WHERE idProveedor=?";
+            
+           try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idProveedor);
+
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                p = new Proveedor();
+                
+                p.setIdProveedor(rs.getInt("idProveedor"));
+                p.setNombre(rs.getString("nombre"));
+                p.setRazonSocial(rs.getString("razonSocial"));
+                p.setDomicilio(rs.getString("domicilio"));
+                p.setTelefono(rs.getString("telefono"));
+            }
+
+            ps.close();
+            rs.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto" + ex.getMessage());
+        }
+
+        return p;
+    }
+    
 }
