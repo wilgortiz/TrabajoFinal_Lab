@@ -10,6 +10,7 @@ import ClasesData.*;
 import com.sun.xml.internal.ws.util.xml.CDATA;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -68,8 +69,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        botonFiltrar = new javax.swing.JButton();
+        textoNombre = new javax.swing.JTextField();
         botonComprar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         textoCantidad = new javax.swing.JTextField();
@@ -97,7 +97,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(0, 51, 102));
         jLabel1.setText("Registrar Compra");
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 102));
         jLabel2.setText("Elije un proveedor:");
 
@@ -105,7 +105,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel3.setText("Nombre:");
+        jLabel3.setText("Filtrar por Nombre:");
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,12 +120,18 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tablaProductos);
 
-        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 102));
         jLabel5.setText("Selecciona un Producto:");
 
-        botonFiltrar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        botonFiltrar.setText("Filtrar");
+        textoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textoNombreKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textoNombreKeyReleased(evt);
+            }
+        });
 
         botonComprar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         botonComprar.setText("Comprar");
@@ -144,14 +150,12 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(199, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonFiltrar)
+                        .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(208, 208, 208))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -207,15 +211,14 @@ public class VistaCompras extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonFiltrar))
-                .addGap(2, 2, 2)
+                    .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(textoCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(botonComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -261,10 +264,36 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         
         produD.incrementarStock(producto.getIdProducto(), detalleCompra, producto.getStock());
         LimpiarTabla();
-        cargarTabla();
+//        cargarTabla();
 
 
     }//GEN-LAST:event_botonComprarActionPerformed
+
+    private void textoNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoNombreKeyPressed
+         LimpiarTabla();
+         
+        
+         
+         
+    }//GEN-LAST:event_textoNombreKeyPressed
+
+    private void textoNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoNombreKeyReleased
+       String subCadena = textoNombre.getText();
+         System.out.println(subCadena);
+         try {
+            ArrayList<Producto> listaProductos2 = (ArrayList<Producto>) produD.listarProductosPorSubCadena(subCadena);
+
+
+        for (Producto aux : listaProductos2) {
+
+           
+
+            modelo.addRow(new Object[]{aux.getNombre(), aux.getDescripcion(), aux.getCategoria(), aux.getPrecioActual(), aux.getStock(), aux.isEstado()});  //cremos la fila de la tabla agregandole valor a sus 3 columnas
+        }
+        } catch (Exception e) {
+            LimpiarTabla();
+        }
+    }//GEN-LAST:event_textoNombreKeyReleased
 
     private void cargarCombo() {
         listaProveedores = (ArrayList<Proveedor>) proveD.listarProveedores();
@@ -319,7 +348,6 @@ public class VistaCompras extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonComprar;
-    private javax.swing.JButton botonFiltrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<Proveedor> comboProveedores;
     private javax.swing.JLabel jLabel1;
@@ -331,8 +359,8 @@ public class VistaCompras extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tablaProductos;
     private javax.swing.JTextField textoCantidad;
+    private javax.swing.JTextField textoNombre;
     // End of variables declaration//GEN-END:variables
 }

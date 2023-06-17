@@ -83,6 +83,38 @@ public class ProductoData {
         }
         return productos;
     }
+    
+    public List<Producto> listarProductosPorSubCadena(String subCadena) {
+
+        List<Producto> productos = new ArrayList<>();
+
+        try {
+
+            String sql = "SELECT * FROM producto WHERE nombre LIKE ? AND estado = true";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "%" + subCadena + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Producto pr = new Producto();
+
+                pr.setIdProducto(rs.getInt("idProducto"));
+                pr.setNombre(rs.getString("nombre"));
+                pr.setCategoria(rs.getString("categoria"));
+                pr.setDescripcion(rs.getString("descripcion"));
+                pr.setPrecioActual(rs.getDouble("precioActual"));
+                pr.setStock(rs.getInt("stock"));
+                pr.setEstado(rs.getBoolean("estado"));
+
+                productos.add(pr);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto " + ex.getMessage());
+        }
+        return productos;
+    }
 
     public Producto buscarProducto(String nombre) {
         Producto p = null; //   Alumno alumno = null;
@@ -115,6 +147,36 @@ public class ProductoData {
         return p;
     }
     
+    public Producto buscarProductoPorSubCadena(String nombre) {
+        Producto p = null; //   Alumno alumno = null;
+        String sql = "SELECT * FROM producto WHERE nombre LIKE '%?%'";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                p = new Producto();
+                p.setIdProducto(rs.getInt("idProducto"));
+                p.setNombre(rs.getString("nombre"));
+                p.setCategoria(rs.getString("categoria"));
+                p.setDescripcion(rs.getString("descripcion"));
+                p.setPrecioActual(rs.getDouble("precioActual"));
+                p.setStock(rs.getInt("stock"));
+                p.setEstado(rs.getBoolean("estado"));
+            }
+
+            ps.close();
+            rs.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto" + ex.getMessage());
+        }
+
+        return p;
+    }
     public Producto buscarProductoPorID (int idProducto){
         Producto p = null;
         String sql = "SELECT * FROM producto WHERE idProducto=?";
