@@ -59,7 +59,7 @@ public class ProductoData {
 
         try {
 
-            String sql = "SELECT * FROM producto WHERE  stock>0 ";
+            String sql = "SELECT * FROM producto WHERE  estado = true ";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

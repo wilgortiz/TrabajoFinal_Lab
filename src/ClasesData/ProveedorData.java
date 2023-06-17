@@ -14,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -63,4 +65,34 @@ public class ProveedorData {
         }
 
     }
+    
+    public List<Proveedor> listarProveedores() {
+
+        List<Proveedor> proveedores = new ArrayList<>();
+
+        try {
+
+            String sql = "SELECT * FROM proveedor";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Proveedor pr = new Proveedor();
+
+               pr.setIdProveedor(rs.getInt("idProveedor"));
+               pr.setNombre(rs.getString("nombre"));
+               pr.setRazonSocial(rs.getString("razonSocial"));
+               pr.setDomicilio(rs.getString("domicilio"));
+               pr.setTelefono(rs.getString("telefono"));
+
+                proveedores.add(pr);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Proveedor " + ex.getMessage());
+        }
+        return proveedores;
+    }
+    
 }

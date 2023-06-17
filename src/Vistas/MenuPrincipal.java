@@ -26,6 +26,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         itemRegistrar = new javax.swing.JMenuItem();
         itemRegistroLista = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        itemRegistrarCompra = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
 
@@ -134,6 +135,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(itemRegistro);
 
         jMenu2.setText("Compra");
+
+        itemRegistrarCompra.setText("Registrar");
+        itemRegistrarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegistrarCompraActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemRegistrarCompra);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -259,6 +269,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(lV);
     }//GEN-LAST:event_itemRegistroListaActionPerformed
 
+    private void itemRegistrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarCompraActionPerformed
+        escritorio.removeAll(); //remover todo
+        escritorio.repaint(); //redibujar     
+
+        VistaCompras vC = new   VistaCompras();   //creamos la vista cliente
+        vC.setVisible(true); //hacemos visible esa vista
+
+        //agregamos y la llevamos al frente del escritorio
+        escritorio.add(vC);
+        escritorio.moveToFront(vC);
+    }//GEN-LAST:event_itemRegistrarCompraActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -298,6 +320,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemAgregarCliente;
     private javax.swing.JMenuItem itemInventario;
     private javax.swing.JMenuItem itemRegistrar;
+    private javax.swing.JMenuItem itemRegistrarCompra;
     private javax.swing.JMenuItem itemRegistrarProv;
     private javax.swing.JMenu itemRegistro;
     private javax.swing.JMenuItem itemRegistroLista;
