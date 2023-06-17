@@ -19,13 +19,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         MenuProveedor = new javax.swing.JMenu();
         itemRegistrarProv = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         menuRegistrar = new javax.swing.JMenuItem();
         itemInventario = new javax.swing.JMenuItem();
         itemRegistro = new javax.swing.JMenu();
         itemRegistrar = new javax.swing.JMenuItem();
         itemRegistroLista = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         jMenu4.setText("jMenu4");
 
@@ -43,7 +43,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 441, Short.MAX_VALUE)
+            .addGap(0, 443, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Cliente");
@@ -82,9 +82,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MenuProveedor.add(itemRegistrarProv);
 
         jMenuBar1.add(MenuProveedor);
-
-        jMenu2.setText("Compra");
-        jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Producto");
         jMenu3.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +132,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         itemRegistro.add(itemRegistroLista);
 
         jMenuBar1.add(itemRegistro);
+
+        jMenu2.setText("Compra");
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
