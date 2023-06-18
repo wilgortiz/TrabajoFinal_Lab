@@ -285,10 +285,10 @@ public class VistaCompras extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void calendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendarioPropertyChange
-         fechaCalendar = calendario.getDate();
+        fechaCalendar = calendario.getDate();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String fecha= sdf.format(fechaCalendar);
+        String fecha = sdf.format(fechaCalendar);
 
         textoFecha.setText(fecha);
     }//GEN-LAST:event_calendarioPropertyChange
@@ -302,27 +302,38 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         proveedor = (Proveedor) comboProveedores.getSelectedItem();
 
         LocalDate fechaLD = fechaCalendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); //pasar date a LocalDate
-       
-        
-       
 
-        //REGISTRAR COMPRA
-        compra = new Compra(proveedor, fechaLD);
-        int idCompra = cD.registrarCompra(compra, proveedor.getIdProveedor()); //recuperar id compra al mismo tiempo q registro compra del resultset
-        compra.setIdCompra(idCompra);
-        //OBTENER VALORES DE LA FILA SELECCIONADA DE LA TABLA
-        String nombre = (String) modelo.getValueAt(tablaProductos.getSelectedRow(), 0);
-        producto = produD.buscarProducto(nombre);
+        try {
+             //OBTENER CANTIDAD DEL TEXTFIELD
+            int cantidad = Integer.parseInt(textoCantidad.getText());
 
-        //REGISTRAR DETALLE DE COMPRA
-        int cantidad = Integer.parseInt(textoCantidad.getText());
-        detalleCompra = new DetalleCompra(cantidad, producto.getPrecioActual() * cantidad, compra, producto);
-        detalleCD.registrarDetalleCompra(detalleCompra, idCompra, producto.getIdProducto());
-        //INCREMENTAR STOCK
+            try {
 
-        produD.incrementarStock(producto.getIdProducto(), detalleCompra, producto.getStock());
-        LimpiarTabla();
-        cargarTabla();
+                //OBTENER VALORES DE LA FILA SELECCIONADA DE LA TABLA
+                String nombre = (String) modelo.getValueAt(tablaProductos.getSelectedRow(), 0);
+                producto = produD.buscarProducto(nombre);
+
+                //REGISTRAR COMPRA
+                compra = new Compra(proveedor, fechaLD);
+                int idCompra = cD.registrarCompra(compra, proveedor.getIdProveedor()); //recuperar id compra al mismo tiempo q registro compra del resultset
+                compra.setIdCompra(idCompra);
+
+                //REGISTRAR DETALLE DE COMPRA
+                detalleCompra = new DetalleCompra(cantidad, producto.getPrecioActual() * cantidad, compra, producto);
+                detalleCD.registrarDetalleCompra(detalleCompra, idCompra, producto.getIdProducto());
+                //INCREMENTAR STOCK
+
+                produD.incrementarStock(producto.getIdProducto(), detalleCompra, producto.getStock());
+                LimpiarTabla();
+                cargarTabla();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Seleccione un producto");
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ingrese un valor numerico para cantidad de unidades");
+        }
+
 
     }//GEN-LAST:event_botonComprarActionPerformed
 
