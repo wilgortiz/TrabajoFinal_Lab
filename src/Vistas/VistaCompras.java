@@ -10,6 +10,8 @@ import ClasesData.*;
 import com.sun.xml.internal.ws.util.xml.CDATA;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,6 +32,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
     private CompraData cD;
     private DetalleCompraData detalleCD;
     private String fecha;
+    private Date fechaCalendar;
 
     private Compra compra;
     private Proveedor proveedor;
@@ -282,7 +285,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void calendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendarioPropertyChange
-        Date fechaCalendar = calendario.getDate();
+         fechaCalendar = calendario.getDate();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String fecha= sdf.format(fechaCalendar);
@@ -298,11 +301,13 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         //TOMAR PROVEEDOR DEL COMBO
         proveedor = (Proveedor) comboProveedores.getSelectedItem();
 
-        String date = "2023-06-15";
-        LocalDate fecha = LocalDate.parse(date);
+        LocalDate fechaLD = fechaCalendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); //pasar date a LocalDate
+       
+        
+       
 
         //REGISTRAR COMPRA
-        compra = new Compra(proveedor, fecha);
+        compra = new Compra(proveedor, fechaLD);
         int idCompra = cD.registrarCompra(compra, proveedor.getIdProveedor()); //recuperar id compra al mismo tiempo q registro compra del resultset
         compra.setIdCompra(idCompra);
         //OBTENER VALORES DE LA FILA SELECCIONADA DE LA TABLA
