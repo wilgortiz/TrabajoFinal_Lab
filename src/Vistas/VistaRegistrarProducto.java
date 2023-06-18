@@ -206,8 +206,9 @@ public class VistaRegistrarProducto extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         
         Producto p1;
-        String nombre = jTextNombre.getText();
-        String descripcion = jTextDescri.getText();
+        String nombre = jTextNombre.getText(); 
+        if (!"".equals(nombre)) {
+             String descripcion = jTextDescri.getText();
         String categoria = (String) comboCategoria.getSelectedItem();
         
         try {
@@ -220,6 +221,10 @@ public class VistaRegistrarProducto extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ingrese un valor numerico para Precio o Stock");
         }
+        } else {
+            JOptionPane.showMessageDialog(null, "El campo Nombre es obligatorio");
+        }
+       
         
 
     }//GEN-LAST:event_btnAgregarActionPerformed

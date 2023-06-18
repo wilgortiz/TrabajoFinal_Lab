@@ -59,7 +59,7 @@ public class ProductoData {
 
         try {
 
-            String sql = "SELECT * FROM producto WHERE  estado = true AND stock > 0 ";
+            String sql = "SELECT * FROM producto";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -90,9 +90,9 @@ public class ProductoData {
 
         try {
 
-            String sql = "SELECT * FROM producto WHERE nombre LIKE ? AND estado = true";
+            String sql = "SELECT * FROM producto WHERE nombre LIKE ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, "%" + subCadena + "%");
+            ps.setString(1,  subCadena + "%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Producto pr = new Producto();
@@ -115,6 +115,10 @@ public class ProductoData {
         }
         return productos;
     }
+    
+    
+    
+    
 
     public Producto buscarProducto(String nombre) {
         Producto p = null; //   Alumno alumno = null;

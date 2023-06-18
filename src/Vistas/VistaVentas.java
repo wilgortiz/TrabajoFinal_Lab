@@ -295,13 +295,23 @@ public class VistaVentas extends javax.swing.JInternalFrame {
 
     private void textoNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoNombreKeyReleased
         String subCadena = textoNombre.getText();
-        System.out.println(subCadena);
+   
         try {
             ArrayList<Producto> listaProductos2 = (ArrayList<Producto>) produD.listarProductosPorSubCadena(subCadena);
 
             for (Producto aux : listaProductos2) {
+                  String estado;
+            if (aux.isEstado()) {
+                estado = "Disponible";
+            } else {
+                estado = "No disponible";
+            }
+            
+                if (estado == "Disponible" && aux.getStock() > 0) {
+                    modelo.addRow(new Object[]{aux.getNombre(), aux.getDescripcion(), aux.getCategoria(), aux.getPrecioActual(), aux.getStock(), estado});  //cremos la fila de la tabla agregandole valor a sus 3 columnas 
+                }
 
-                modelo.addRow(new Object[]{aux.getNombre(), aux.getDescripcion(), aux.getCategoria(), aux.getPrecioActual(), aux.getStock(), aux.isEstado()});  //cremos la fila de la tabla agregandole valor a sus 3 columnas
+               
             }
         } catch (Exception e) {
             LimpiarTabla();
@@ -399,7 +409,9 @@ public class VistaVentas extends javax.swing.JInternalFrame {
                 estado = "No disponible";
             }
 
-            modelo.addRow(new Object[]{aux.getNombre(), aux.getDescripcion(), aux.getCategoria(), aux.getPrecioActual(), aux.getStock(), estado});  //cremos la fila de la tabla agregandole valor a sus 3 columnas
+            if (estado == "Disponible" && aux.getStock() > 0) {
+                    modelo.addRow(new Object[]{aux.getNombre(), aux.getDescripcion(), aux.getCategoria(), aux.getPrecioActual(), aux.getStock(), estado});  //cremos la fila de la tabla agregandole valor a sus 3 columnas 
+                }
         }
     }
      private void LimpiarTabla() {

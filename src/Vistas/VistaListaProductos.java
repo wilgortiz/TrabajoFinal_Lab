@@ -41,7 +41,6 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
         btnSalir = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         textoBuscar = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
@@ -71,15 +70,15 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(3, 57, 112));
-        jLabel5.setText("Nombre de Producto:");
+        jLabel5.setText("Filtrar por nombre:");
 
         textoBuscar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-
-        btnBuscar.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
+        textoBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textoBuscarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textoBuscarKeyReleased(evt);
             }
         });
 
@@ -129,18 +128,9 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(112, 112, 112)
-                                .addComponent(jLabel3))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBuscar)))
-                        .addGap(0, 191, Short.MAX_VALUE)))
+                        .addGap(270, 270, 270)
+                        .addComponent(jLabel3)
+                        .addGap(0, 272, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -149,8 +139,15 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
                 .addComponent(btnEliminar)
                 .addGap(287, 287, 287))
             .addGroup(panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(226, 226, 226)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
@@ -161,21 +158,20 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
                     .addGroup(panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnSalir)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)
                         .addGap(0, 94, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                    .addGroup(panelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnModificar)
@@ -200,17 +196,6 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
-        limpiarTabla();
-        String nombre = textoBuscar.getText();
-
-        Producto aux = pD.buscarProducto(nombre);
-
-        modelo.addRow(new Object[]{aux.getNombre(), aux.getDescripcion(), aux.getCategoria(), aux.getPrecioActual(), aux.getStock(), aux.isEstado()});
-
-    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
@@ -252,6 +237,31 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void textoBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoBuscarKeyReleased
+        String subCadena = textoBuscar.getText();
+        System.out.println(subCadena);
+        try {
+            ArrayList<Producto> listaProductos2 = (ArrayList<Producto>) pD.listarProductosPorSubCadena(subCadena);
+
+            for (Producto aux : listaProductos2) {
+                String estado;
+                if (aux.isEstado()) {
+                    estado = "Disponible";
+                } else {
+                    estado = "No disponible";
+                }
+
+                modelo.addRow(new Object[]{aux.getIdProducto(), aux.getNombre(), aux.getDescripcion(), aux.getCategoria(), aux.getPrecioActual(), aux.getStock(), estado});  //cremos la fila de la tabla agregandole valor a sus 3 columnas
+            }
+        } catch (Exception e) {
+            limpiarTabla();
+        }
+    }//GEN-LAST:event_textoBuscarKeyReleased
+
+    private void textoBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoBuscarKeyPressed
+        limpiarTabla();
+    }//GEN-LAST:event_textoBuscarKeyPressed
 
     private void crearTabla() {
 
@@ -301,7 +311,6 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
