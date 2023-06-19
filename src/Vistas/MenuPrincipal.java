@@ -49,7 +49,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Cliente");
 
-        itemAgregarCliente.setText("agregar un cliente");
+        itemAgregarCliente.setText("Agregar Clientes");
         itemAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemAgregarClienteActionPerformed(evt);
@@ -57,7 +57,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(itemAgregarCliente);
 
-        jMenuItem1.setText("buscar cliente");
+        jMenuItem1.setText("Modificar Clientes");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -167,7 +167,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.removeAll(); //remover todo
         escritorio.repaint(); //redibujar     
 
-        VistaClientes vcl = new VistaClientes();   //creamos la vista cliente
+        VistaModificarClientes vcl = new VistaModificarClientes();   //creamos la vista cliente
         vcl.setVisible(true); //hacemos visible esa vista
 
         //agregamos y la llevamos al frente del escritorio

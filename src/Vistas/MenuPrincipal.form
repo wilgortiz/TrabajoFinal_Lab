@@ -25,7 +25,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemAgregarCliente">
               <Properties>
-                <Property name="text" type="java.lang.String" value="agregar un cliente"/>
+                <Property name="text" type="java.lang.String" value="Agregar Clientes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemAgregarClienteActionPerformed"/>
@@ -33,7 +33,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="buscar cliente"/>
+                <Property name="text" type="java.lang.String" value="Modificar Clientes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>

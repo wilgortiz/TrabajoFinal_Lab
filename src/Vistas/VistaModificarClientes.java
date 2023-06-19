@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author wilgortiz
  */
-public class VistaClientes extends javax.swing.JInternalFrame {
+public class VistaModificarClientes extends javax.swing.JInternalFrame {
 
    private Cliente c1;
     private final ClienteData vc;
 
-    public VistaClientes() {
+    public VistaModificarClientes() {
         initComponents();
         this.vc = new ClienteData();
     }
@@ -260,10 +260,19 @@ public class VistaClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonBuscarClienteActionPerformed
 
     private void botonModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarClienteActionPerformed
-        Cliente c2 = new Cliente(textoapellidoCliente.getText(), textonombreCliente.getText(), textodomicilioCliente.getText(), textotelefonoCliente.getText());
-        vc.modificarCliente(c2, c1.getIdCliente());
+       Cliente c2 = new Cliente(textoapellidoCliente.getText(), textonombreCliente.getText(), textodomicilioCliente.getText(), textotelefonoCliente.getText());
 
-        limpiar();
+        // Validar número de teléfono
+        String telefono = textotelefonoCliente.getText();
+        String regex = "^[0-9 ]*$"; //expresion regular para hacer la validacion
+
+        if (telefono.matches(regex)) {
+            vc.modificarCliente(c2, c1.getIdCliente());
+            limpiar();
+        } else {
+            JOptionPane.showMessageDialog(null, "Teléfono inválido, Ingrese SOLO numeros para modificar el campo ", "Error", JOptionPane.ERROR_MESSAGE);
+            textotelefonoCliente.setText("");
+        }
 
         // Cliente c1 = new (id, textoDni.getText(), textoApellido.getText(), textoNombre.getText(), LocalDate.parse(textoFecha.getText()), estado);
         //        aD.modificarAlumno(a1);
