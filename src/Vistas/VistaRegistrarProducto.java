@@ -48,7 +48,7 @@ public class VistaRegistrarProducto extends javax.swing.JInternalFrame {
 
         jLabel7.setText("jLabel7");
 
-        jPanel1.setBackground(new java.awt.Color(255, 230, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 249, 39));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(3, 57, 112));
