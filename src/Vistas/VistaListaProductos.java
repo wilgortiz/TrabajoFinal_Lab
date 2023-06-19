@@ -221,12 +221,16 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
             if ("disponible".equals(modelo.getValueAt(tablaProductos.getSelectedRow(), 6).toString().toLowerCase())) {
 
                 p.setEstado(true);
+                pD.modificarProducto(p);
             } else if ("no disponible".equals(modelo.getValueAt(tablaProductos.getSelectedRow(), 6).toString().toLowerCase())) {
 
                 p.setEstado(false);
+                pD.modificarProducto(p);
+            } else {
+                JOptionPane.showMessageDialog(null, "Los valores de Estado deben ser Disponible o No disponible");
             }
 
-            pD.modificarProducto(p);
+            
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Los valores de Precio y Stock deben ser numericos");
