@@ -289,20 +289,25 @@ public class VistaVentas extends javax.swing.JInternalFrame {
                 producto = produD.buscarProducto(nombre);
 
                 //REGISTRAR VENTA
-                venta = new Venta(fecha, cliente);
-                int idVenta = vD.registrarVenta(venta, cliente.getIdCliente()); //recuperar id venta al mismo tiempo q registro compra del resultset
-                venta.setIdVenta(idVenta);
+                if (cantidad <= producto.getStock()) { //validar que el stock sea mayor a la cantidad q se pide
+                    venta = new Venta(fecha, cliente);
+                    int idVenta = vD.registrarVenta(venta, cliente.getIdCliente()); //recuperar id venta al mismo tiempo q registro compra del resultset
+                    venta.setIdVenta(idVenta);
 
-                //REGISTRAR DETALLE DE VENTA
-                detalleVenta = new DetalleVenta(cantidad, producto.getPrecioActual() * cantidad, venta, producto);
-                dVD.registrarDetalleVenta(detalleVenta, idVenta, producto.getIdProducto());
+                    //REGISTRAR DETALLE DE VENTA
+                    detalleVenta = new DetalleVenta(cantidad, producto.getPrecioActual() * cantidad, venta, producto);
+                    dVD.registrarDetalleVenta(detalleVenta, idVenta, producto.getIdProducto());
 
-                //INCREMENTAR STOCK
-                produD.decrementarStock(producto.getIdProducto(), detalleVenta, producto.getStock());
+                    //INCREMENTAR STOCK
+                    produD.decrementarStock(producto.getIdProducto(), detalleVenta, producto.getStock());
 
-                LimpiarTabla();
-                cargarTabla();
-                LimpiarTexto();
+                    LimpiarTabla();
+                    cargarTabla();
+                    LimpiarTexto();
+                } else {
+                    JOptionPane.showMessageDialog(null, "La cantidad especificada e smayor al stock");
+                }
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Seleccione un producto");
             }

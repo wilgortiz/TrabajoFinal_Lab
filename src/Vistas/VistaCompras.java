@@ -279,7 +279,9 @@ public class VistaCompras extends javax.swing.JInternalFrame {
                 producto = produD.buscarProducto(nombre);
 
                 //REGISTRAR COMPRA
-                compra = new Compra(proveedor, fecha);
+                
+               
+                    compra = new Compra(proveedor, fecha);
                 int idCompra = cD.registrarCompra(compra, proveedor.getIdProveedor()); //recuperar id compra al mismo tiempo q registro compra del resultset
                 compra.setIdCompra(idCompra);
 
@@ -292,6 +294,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
                 LimpiarTabla();
                 cargarTabla();
                 LimpiarTexto();
+               
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Seleccione un producto");
             }

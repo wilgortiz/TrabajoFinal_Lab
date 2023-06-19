@@ -183,29 +183,27 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
     private void calendario2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendario2PropertyChange
         limpiarTabla();
         ventas = venData.listaVentas();
-         // Obtener el valor seleccionado como objeto Calendar
+        // Obtener el valor seleccionado como objeto Calendar
         Calendar calendar = calendario2.getCalendar();
 
         // Convertir el objeto Calendar a LocalDate
         try {
             LocalDate fecha = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        for (Venta aux : ventas) {
 
-           
+            for (Venta aux : ventas) {
 
-            if (aux.getFecha().compareTo(fecha) == 0) {
-                Cliente c1 = cD.buscarCliente(aux.getCliente().getIdCliente());
+                if (aux.getFecha().compareTo(fecha) == 0) {
+                    Cliente c1 = cD.buscarCliente(aux.getCliente().getIdCliente());
 
-                DetalleVenta dv1 = dV.buscarDetalle(aux.getIdVenta());
+                    DetalleVenta dv1 = dV.buscarDetalle(aux.getIdVenta());
 
-                modelo.addRow(new Object[]{aux.getIdVenta(), aux.getFecha(), c1.getNombre(), c1.getApellido(), c1.getTelefono(), dv1.getProducto().getNombre(), dv1.getCantidad(), dv1.getPrecioVenta()});
+                    modelo.addRow(new Object[]{aux.getIdVenta(), aux.getFecha(), c1.getNombre(), c1.getApellido(), c1.getTelefono(), dv1.getProducto().getNombre(), dv1.getCantidad(), dv1.getPrecioVenta()});
+                }
+
             }
-
-        }
         } catch (Exception e) {
         }
-        
+
     }//GEN-LAST:event_calendario2PropertyChange
 
     private void CrearTabla() {
