@@ -107,7 +107,7 @@ public class VistaRegistrarProducto extends javax.swing.JInternalFrame {
         jLabel8.setText("Categoria:");
 
         comboCategoria.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cocina", "Baño", "Hogar", " " }));
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "Cocina", "Lavanderia", "Cuidado Personal", "Entretenimiento", "Calefaccion" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
