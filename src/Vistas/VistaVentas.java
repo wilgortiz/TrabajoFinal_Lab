@@ -25,7 +25,7 @@ public class VistaVentas extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo;
     private DefaultTableModel modelo2;
-    
+
     private ClienteData clienteD;
     private ProductoData produD;
     private VentaData vD;
@@ -35,11 +35,10 @@ public class VistaVentas extends javax.swing.JInternalFrame {
     private Producto producto;
     private Venta venta;
     private DetalleVenta detalleVenta;
-    
+
     private String fecha;
     private java.util.Date fechaCalendar;
-   
-    
+
     private ArrayList<Producto> listaProductos;
     private ArrayList<Cliente> listaClientes;
 
@@ -47,27 +46,24 @@ public class VistaVentas extends javax.swing.JInternalFrame {
         initComponents();
         modelo = new DefaultTableModel();
         modelo2 = new DefaultTableModel();
-        
+
         clienteD = new ClienteData();
         produD = new ProductoData();
         vD = new VentaData();
         dVD = new DetalleVentaData();
-        
-        
+
         cliente = new Cliente();
         producto = new Producto();
         venta = new Venta();
         detalleVenta = new DetalleVenta();
-        
-        
+
         listaProductos = new ArrayList<>();
         listaClientes = new ArrayList<>();
-       
+
         cargarCombo();
         crearTabla();
         cargarTabla();
-        textoFecha.setEditable(false);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -277,14 +273,13 @@ public class VistaVentas extends javax.swing.JInternalFrame {
         //TOMAR CLIENTE DEL COMBO
         cliente = (Cliente) comboClientes.getSelectedItem();
 
-        // Obtener el valor seleccionado como objeto Calendar
-        Calendar calendar = calendario2.getCalendar();
-
-        // Convertir el objeto Calendar a LocalDate
-
-        LocalDate fecha = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
         try {
+
+            // Obtener el valor seleccionado como objeto Calendar
+            Calendar calendar = calendario2.getCalendar();
+
+            // Convertir el objeto Calendar a LocalDate
+            LocalDate fecha = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             //OBTENER CANTIDAD DEL TEXTFIELD
             int cantidad = Integer.parseInt(textoCantidad.getText());
 
@@ -315,6 +310,8 @@ public class VistaVentas extends javax.swing.JInternalFrame {
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ingrese un valor numerico para cantidad de unidades");
+        } catch (NullPointerException a) {
+            JOptionPane.showMessageDialog(null, "Ingrese una fecha");
         }
     }//GEN-LAST:event_botonVenderActionPerformed
 
@@ -350,14 +347,14 @@ public class VistaVentas extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-   private void cargarCombo() {
+    private void cargarCombo() {
         listaClientes = (ArrayList<Cliente>) clienteD.listarClientes();
 
         for (Cliente aux : listaClientes) {
             comboClientes.addItem(aux);
         }
     }
-    
+
     private void crearTabla() {
         //para cargar los datos de inscripcion a la tabla
         //columnas:
@@ -375,6 +372,7 @@ public class VistaVentas extends javax.swing.JInternalFrame {
         }
         tablaProductos.setModel(modelo); //le setemos por ultimo el modelo a la tabla
     }
+
     private void cargarTabla() {
         listaProductos = (ArrayList<Producto>) produD.listarProductos();
 
@@ -388,19 +386,20 @@ public class VistaVentas extends javax.swing.JInternalFrame {
             }
 
             if (estado == "Disponible" && aux.getStock() > 0) {
-                    modelo.addRow(new Object[]{aux.getNombre(), aux.getDescripcion(), aux.getCategoria(), aux.getPrecioActual(), aux.getStock(), estado});  //cremos la fila de la tabla agregandole valor a sus 3 columnas 
-                }
+                modelo.addRow(new Object[]{aux.getNombre(), aux.getDescripcion(), aux.getCategoria(), aux.getPrecioActual(), aux.getStock(), estado});  //cremos la fila de la tabla agregandole valor a sus 3 columnas 
+            }
         }
     }
-     private void LimpiarTabla() {
+
+    private void LimpiarTabla() {
         int filas = modelo.getRowCount() - 1; //saber cantidad de filas
 
         for (int i = filas; i >= 0; i--) {   //recorre para borralas una x una
             modelo.removeRow(i);
         }
     }
-    
-    private void LimpiarTexto(){
+
+    private void LimpiarTexto() {
         textoCantidad.setText("");
     }
 
