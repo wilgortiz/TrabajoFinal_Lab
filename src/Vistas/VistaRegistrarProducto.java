@@ -48,9 +48,9 @@ public class VistaRegistrarProducto extends javax.swing.JInternalFrame {
 
         jLabel7.setText("jLabel7");
 
-        jPanel1.setBackground(new java.awt.Color(255, 230, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 249, 39));
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(3, 57, 112));
         jLabel1.setText("Stock:");
 
@@ -62,15 +62,15 @@ public class VistaRegistrarProducto extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(3, 57, 112));
         jLabel3.setText("Registro de Productos");
 
-        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(3, 57, 112));
         jLabel4.setText("Descripcion:");
 
-        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(3, 57, 112));
         jLabel5.setText("Nombre:");
 
-        jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(3, 57, 112));
         jLabel6.setText("Precio:");
 
@@ -102,12 +102,12 @@ public class VistaRegistrarProducto extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(3, 57, 112));
         jLabel8.setText("Categoria:");
 
-        comboCategoria.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cocina", "Baño", "Hogar", " " }));
+        comboCategoria.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "Cocina", "Lavanderia", "Cuidado Personal", "Entretenimiento", "Calefaccion" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -150,7 +150,7 @@ public class VistaRegistrarProducto extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(comboCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                        .addGap(0, 120, Short.MAX_VALUE)))
+                        .addGap(0, 139, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(

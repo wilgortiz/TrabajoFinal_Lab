@@ -70,7 +70,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return nombre + "-" + domicilio + "-" + telefono;
+        return apellido + ", " + nombre + "-" + domicilio + "-" + telefono;
     }
     
     
