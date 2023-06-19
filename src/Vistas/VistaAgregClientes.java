@@ -7,6 +7,7 @@ package Vistas;
 
 import ClasesData.ClienteData;
 import Modelo.Cliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -160,12 +161,33 @@ public class VistaAgregClientes extends javax.swing.JInternalFrame {
 
     private void botongregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botongregarClienteActionPerformed
 
-        Cliente c1 = new Cliente(textoapellidoCliente.getText(), textonombreCliente.getText(), textodomicilioCliente.getText(), textotelefonoCliente.getText());
+//        Cliente c1 = new Cliente(textoapellidoCliente.getText(), textonombreCliente.getText(), textodomicilioCliente.getText(), textotelefonoCliente.getText());
+//
+//        //agregamos el cliente
+//        vc2.agregarCliente(c1);
+//
+//        limpiar();
 
-        //agregamos el cliente
-        vc2.agregarCliente(c1);
 
-        limpiar();
+        String telefono = textotelefonoCliente.getText();
+
+        // Expresión regular para validar que ingrese numeros y ademas el caracter vacío
+        String regex = "^[0-9 ]*$";
+
+        // Comprobamos si el telefono cumple con el patron. Debe ingresar numeros.
+        if (telefono.matches(regex)) {
+            Cliente c1 = new Cliente(textoapellidoCliente.getText(),
+                    textonombreCliente.getText(), textodomicilioCliente.getText(), telefono);
+            vc2.agregarCliente(c1);
+            limpiar();
+        } else {
+            // El teléfono no cumple con el patrón, mostrar mensaje de error o solicitar nuevo ingreso
+            JOptionPane.showMessageDialog(null, "Telefono invalido. Ingrese solo numeros ", "Error", JOptionPane.ERROR_MESSAGE);
+
+            textotelefonoCliente.setText(""); // Limpiar el campo telefono
+        }
+
+
     }//GEN-LAST:event_botongregarClienteActionPerformed
 
     public void limpiar() {
@@ -173,8 +195,6 @@ public class VistaAgregClientes extends javax.swing.JInternalFrame {
         textonombreCliente.setText("");
         textodomicilioCliente.setText("");
         textotelefonoCliente.setText("");
-
-
 
     }
 
