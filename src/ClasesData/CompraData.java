@@ -5,13 +5,15 @@
  */
 package ClasesData;
 
-import Modelo.Compra;
+import Modelo.*;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -85,5 +87,39 @@ public class CompraData {
         }
     
     return c;
+    }
+    
+    
+    
+    
+    public List<Compra> listaCompras(){
+        
+        List<Compra> listaDeCompras = new ArrayList<>();
+        
+        String sql = "SELECT * FROM compra";
+         try {
+             PreparedStatement ps = con.prepareStatement(sql);
+             
+             ResultSet rs = ps.executeQuery();
+             
+             while (rs.next()) {
+               Compra com = new Compra();
+               Proveedor p = new Proveedor();
+               p.setIdProveedor(rs.getInt("idProveedor"));
+               
+               
+               com.setIdCompra(rs.getInt("idCompra"));
+               com.setFecha(rs.getDate("fecha").toLocalDate());
+               com.setProveedorC(p);
+               
+               listaDeCompras.add(com);
+             }
+             
+             
+         } catch (SQLException ex) {
+            
+         }
+        
+         return listaDeCompras;
     }
 }
