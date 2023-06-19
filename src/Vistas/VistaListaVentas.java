@@ -192,7 +192,7 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
         
         for (Venta aux : ventas) {
 
-            System.out.println("otro:" + aux.getFecha());
+           
 
             if (aux.getFecha().compareTo(fecha) == 0) {
                 Cliente c1 = cD.buscarCliente(aux.getCliente().getIdCliente());

@@ -56,7 +56,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         cargarCombo();
         crearTabla();
         cargarTabla();
-        
+
     }
 
     /**
@@ -268,11 +268,9 @@ public class VistaCompras extends javax.swing.JInternalFrame {
         //TOMAR PROVEEDOR DEL COMBO
         proveedor = (Proveedor) comboProveedores.getSelectedItem();
 
-       
-
         try {
-            
-             // Obtener el valor seleccionado como objeto Calendar
+
+            // Obtener el valor seleccionado como objeto Calendar
             Calendar calendar = calendario.getCalendar();
 
             // Convertir el objeto Calendar a LocalDate
@@ -306,7 +304,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ingrese un valor numerico para cantidad de unidades");
-        }  catch (NullPointerException a) {
+        } catch (NullPointerException a) {
             JOptionPane.showMessageDialog(null, "Ingrese una fecha");
         }
 
@@ -315,7 +313,7 @@ public class VistaCompras extends javax.swing.JInternalFrame {
 
     private void textoNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoNombreKeyReleased
         String subCadena = textoNombre.getText();
-     
+
         try {
             ArrayList<Producto> listaProductos2 = (ArrayList<Producto>) produD.listarProductosPorSubCadena(subCadena);
 
