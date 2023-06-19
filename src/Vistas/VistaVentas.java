@@ -18,7 +18,7 @@ import jdk.nashorn.internal.runtime.regexp.joni.Option;
 
 /**
  *
- * @author Mateo
+ * @author darioPascuali
  */
 public class VistaVentas extends javax.swing.JInternalFrame {
 

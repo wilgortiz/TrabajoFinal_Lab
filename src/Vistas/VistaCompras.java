@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author 54266
+ * @author darioPascuali
  */
 public class VistaCompras extends javax.swing.JInternalFrame {
 

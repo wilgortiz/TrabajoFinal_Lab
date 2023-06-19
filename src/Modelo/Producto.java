@@ -33,6 +33,16 @@ public class Producto {
         this.estado = estado;
     }
 
+    public Producto(int idProducto, String nombre, String descripcion, String categoria, double precioActual, int stock) {
+        this.idProducto = idProducto;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.precioActual = precioActual;
+        this.stock = stock;
+
+    }
+
     public int getIdProducto() {
         return idProducto;
     }
@@ -89,14 +99,9 @@ public class Producto {
         this.estado = estado;
     }
 
-    
-    
-    
-    
     @Override
     public String toString() {
         return "Producto{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", categoria=" + categoria + ", precioActual=" + precioActual + ", stock=" + stock + ", estado=" + estado + '}';
     }
 
-    
 }

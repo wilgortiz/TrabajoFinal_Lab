@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author 54266
+ * @author darioPascuali
  */
 public class VistaListaProductos extends javax.swing.JInternalFrame {
 
@@ -209,27 +209,27 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
 
         double precio = 0;
         int stock = 0;
-        boolean estado = false;
 
-        Producto p;
+        Producto p = new Producto();
 
         try {
             precio = Double.parseDouble(modelo.getValueAt(tablaProductos.getSelectedRow(), 4).toString());
             stock = Integer.parseInt(modelo.getValueAt(tablaProductos.getSelectedRow(), 5).toString());
 
-            if ("Disponible" == modelo.getValueAt(tablaProductos.getSelectedRow(), 6)) {
-                estado = true;
-            } else if ("No disponible" == modelo.getValueAt(tablaProductos.getSelectedRow(), 6)) {
-                estado = false;
+            p = new Producto(id, nombre, descripcion, categoria, precio, stock);
+
+            if ("disponible".equals(modelo.getValueAt(tablaProductos.getSelectedRow(), 6).toString().toLowerCase())) {
+
+                p.setEstado(true);
+            } else if ("no disponible".equals(modelo.getValueAt(tablaProductos.getSelectedRow(), 6).toString().toLowerCase())) {
+
+                p.setEstado(false);
             }
 
-            p = new Producto(id, nombre, descripcion, categoria, precio, stock, estado);
             pD.modificarProducto(p);
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Los valores de Precio y Stock deben ser numericos");
-        } catch (Exception e2) {
-            JOptionPane.showMessageDialog(null, "Los valores de estado deben ser Disponible/No disponible");
         }
 
         limpiarTabla();

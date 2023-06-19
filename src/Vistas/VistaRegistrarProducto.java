@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author 54266
+ * @author darioPascuali
  */
 public class VistaRegistrarProducto extends javax.swing.JInternalFrame {
     
