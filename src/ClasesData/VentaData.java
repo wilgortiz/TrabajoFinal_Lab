@@ -96,6 +96,8 @@ public class VentaData {
          return listaDeVentas;
     } 
     
+   
+    
     public Venta buscarVentaPorID (int idVenta){
         Venta v = null;
         String sql = "SELECT * FROM Venta WHERE idVenta=?";
