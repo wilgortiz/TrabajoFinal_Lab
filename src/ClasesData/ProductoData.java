@@ -212,19 +212,23 @@ public class ProductoData {
         return p;
     }
 
-     public void eliminarProducto(String nombre) {
-        String sql = "DELETE FROM producto WHERE nombre=?";
-
-        PreparedStatement ps;
+     public void eliminarProducto(int id) {
+         String sql = "UPDATE producto SET estado=? WHERE idProducto=?";
 
         try {
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setString(1, nombre);
+           
+            ps.setBoolean(1, false);
+            ps.setInt(2, id);
+            
 
-            int aux = ps.executeUpdate();
-            if (aux == 1) {
-                JOptionPane.showMessageDialog(null, "producto eliminado con exito");
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "El Producto se elimino correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al eliminar el Producto");
             }
 
             ps.close();

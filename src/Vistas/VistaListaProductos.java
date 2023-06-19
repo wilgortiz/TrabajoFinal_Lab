@@ -7,6 +7,7 @@ package Vistas;
 
 import ClasesData.ProductoData;
 import Modelo.Producto;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -198,7 +199,10 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+       int id = (int) modelo.getValueAt(tablaProductos.getSelectedRow(), 0);
+        pD.eliminarProducto(id);
+        limpiarTabla();
+        CargarTabla();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -301,7 +305,7 @@ public class VistaListaProductos extends javax.swing.JInternalFrame {
             } else {
                 estado = "No disponible";
             }
-
+          
             modelo.addRow(new Object[]{aux.getIdProducto(), aux.getNombre(), aux.getDescripcion(), aux.getCategoria(), aux.getPrecioActual(), aux.getStock(), estado});  //cremos la fila de la tabla agregandole valor a sus 3 columnas
         }
     }
