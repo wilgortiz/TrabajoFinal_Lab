@@ -155,6 +155,36 @@ public class ClienteData {
         
     }
     
+     public List<Cliente> listarClientesPorSubCadena(String subCadena) {
+
+        List<Cliente> clientes = new ArrayList<>();
+
+        try {
+
+            String sql = "SELECT * FROM Cliente WHERE nombre LIKE ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,  subCadena + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Cliente c = new Cliente();
+
+                c.setIdCliente(rs.getInt("idCliente"));
+                c.setNombre(rs.getString("nombre"));
+                c.setApellido(rs.getString("apellido"));
+                c.setDomicilio(rs.getString("domicilio"));
+                c.setTelefono(rs.getString("telefono"));
+              
+
+                clientes.add(c);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto " + ex.getMessage());
+        }
+        return clientes;
+    }
     public List<Cliente> listarClientes() {
         
         List<Cliente> clientes = new ArrayList<>();

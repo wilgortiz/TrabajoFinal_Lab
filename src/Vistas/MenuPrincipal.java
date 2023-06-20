@@ -16,7 +16,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         itemAgregarCliente = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        itemModificarCliente = new javax.swing.JMenuItem();
         MenuProveedor = new javax.swing.JMenu();
         itemRegistrarProv = new javax.swing.JMenuItem();
         itemModificarP = new javax.swing.JMenuItem();
@@ -59,13 +59,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(itemAgregarCliente);
 
-        jMenuItem1.setText("Modificar Clientes");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itemModificarCliente.setText("Modificar Clientes");
+        itemModificarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itemModificarClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(itemModificarCliente);
 
         jMenuBar1.add(jMenu1);
 
@@ -181,7 +181,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //vista alumno    
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itemModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModificarClienteActionPerformed
         escritorio.removeAll(); //remover todo
         escritorio.repaint(); //redibujar     
 
@@ -191,7 +191,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //agregamos y la llevamos al frente del escritorio
         escritorio.add(vcl);
         escritorio.moveToFront(vcl);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_itemModificarClienteActionPerformed
 
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
@@ -353,6 +353,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem itemAgregarCliente;
     private javax.swing.JMenuItem itemInventario;
+    private javax.swing.JMenuItem itemModificarCliente;
     private javax.swing.JMenuItem itemModificarP;
     private javax.swing.JMenuItem itemRegistrar;
     private javax.swing.JMenuItem itemRegistrarCompra;
@@ -365,7 +366,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem menuRegistrar;
     // End of variables declaration//GEN-END:variables
