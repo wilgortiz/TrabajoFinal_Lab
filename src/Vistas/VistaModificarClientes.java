@@ -53,9 +53,7 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Telefono");
 
-        botonBuscarCliente.setForeground(new java.awt.Color(0, 0, 0));
         botonBuscarCliente.setText("BUSCAR ");
-        botonBuscarCliente.setOpaque(false);
         botonBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarClienteActionPerformed(evt);
@@ -76,7 +74,6 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
 
         textotelefonoCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
-        botonModificarCliente.setForeground(new java.awt.Color(0, 0, 0));
         botonModificarCliente.setText("MODIFICAR");
         botonModificarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +81,6 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
             }
         });
 
-        botonSalir.setForeground(new java.awt.Color(0, 0, 0));
         botonSalir.setText("SALIR");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +92,6 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MODIFICAR/ELIMINAR CLIENTES");
 
-        botonEliminarCliente.setForeground(new java.awt.Color(0, 0, 0));
         botonEliminarCliente.setText("ELIMINAR");
         botonEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +173,7 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
                         .addComponent(textoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(botonBuscarCliente)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +191,7 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
                     .addComponent(botonBuscarCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(textoid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

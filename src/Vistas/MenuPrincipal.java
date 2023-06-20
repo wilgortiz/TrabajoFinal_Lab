@@ -19,6 +19,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         MenuProveedor = new javax.swing.JMenu();
         itemRegistrarProv = new javax.swing.JMenuItem();
+        itemModificarP = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuRegistrar = new javax.swing.JMenuItem();
         itemInventario = new javax.swing.JMenuItem();
@@ -27,6 +28,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         itemRegistroLista = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         itemRegistrarCompra = new javax.swing.JMenuItem();
+        itemRegistroCompras = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
 
@@ -81,6 +83,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         MenuProveedor.add(itemRegistrarProv);
+
+        itemModificarP.setText("Modificar Proveedores");
+        itemModificarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemModificarPActionPerformed(evt);
+            }
+        });
+        MenuProveedor.add(itemModificarP);
 
         jMenuBar1.add(MenuProveedor);
 
@@ -143,6 +153,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(itemRegistrarCompra);
+
+        itemRegistroCompras.setText("Registro de Compras");
+        itemRegistroCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegistroComprasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemRegistroCompras);
 
         jMenuBar1.add(jMenu2);
 
@@ -281,6 +299,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(vC);
     }//GEN-LAST:event_itemRegistrarCompraActionPerformed
 
+    private void itemRegistroComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistroComprasActionPerformed
+        escritorio.removeAll(); //remover todo
+        escritorio.repaint(); //redibujar     
+
+        VistaListaCompras vlC = new   VistaListaCompras();   //creamos la vista cliente
+        vlC.setVisible(true); //hacemos visible esa vista
+
+        //agregamos y la llevamos al frente del escritorio
+        escritorio.add(vlC);
+        escritorio.moveToFront(vlC);
+    }//GEN-LAST:event_itemRegistroComprasActionPerformed
+
+    private void itemModificarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModificarPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemModificarPActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -319,10 +353,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem itemAgregarCliente;
     private javax.swing.JMenuItem itemInventario;
+    private javax.swing.JMenuItem itemModificarP;
     private javax.swing.JMenuItem itemRegistrar;
     private javax.swing.JMenuItem itemRegistrarCompra;
     private javax.swing.JMenuItem itemRegistrarProv;
     private javax.swing.JMenu itemRegistro;
+    private javax.swing.JMenuItem itemRegistroCompras;
     private javax.swing.JMenuItem itemRegistroLista;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

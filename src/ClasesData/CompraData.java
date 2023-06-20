@@ -74,7 +74,7 @@ public class CompraData {
                 c = new Compra();
                 ClienteData cD= new ClienteData();
                
-                c.setIdCompra(rs.getInt("idVenta"));
+                c.setIdCompra(rs.getInt("idCompra"));
                 c.setProveedorC(proveData.buscarProveedorPorID(rs.getInt("idProveedor"))); //buscar proveedor
                
             }
