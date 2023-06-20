@@ -9,6 +9,7 @@ public class Cliente {
     private String nombre;
     private String domicilio;
     private String telefono;
+    private boolean estado;
 
     public Cliente() {
     }
@@ -27,6 +28,16 @@ public class Cliente {
         this.domicilio = domicilio;
         this.telefono = telefono;
     }
+
+    public Cliente(String apellido, String nombre, String domicilio, String telefono, boolean estado) {
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+        this.estado = estado;
+    }
+    
+    
 
     public int getIdCliente() {
         return idCliente;
@@ -67,6 +78,16 @@ public class Cliente {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+    
+    
 
     @Override
     public String toString() {
