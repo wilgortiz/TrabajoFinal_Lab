@@ -43,52 +43,6 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
         CrearTabla();
     }
 
-    private void CrearTabla() {
-
-        //para cargar los datos de inscripcion a la tabla
-        //columnas:
-        ArrayList<Object> columnas = new ArrayList<Object>();
-        columnas.add("ID");
-        columnas.add("Fecha");
-        columnas.add("Nombre");
-        columnas.add("Razon Social");
-        columnas.add("Telefono");
-        columnas.add("Domicilio");
-        columnas.add("Producto");
-        columnas.add("Cantidad");
-        columnas.add("Precio");
-
-        for (Object columna : columnas) {
-            modelo.addColumn(columna);   //para agregarle columna x columna recorremos con un for each la lista columnas
-        }
-        tablaCompras.setModel(modelo); //le setemos por ultimo el modelo a la tabla
-
-        limpiarTabla();
-
-    }
-
-    private void CargarTabla() {
-        limpiarTabla();
-        compras = comData.listaCompras();
-
-        for (Compra aux : compras) {
-
-            Proveedor p1 = provD.buscarProveedorPorID(aux.getProveedorC().getIdProveedor());
-
-            DetalleCompra dC1 = dC.buscarDetalleCompra(aux.getIdCompra());
-
-            modelo.addRow(new Object[]{aux.getIdCompra(), aux.getFecha(), p1.getNombre(), p1.getRazonSocial(), p1.getTelefono(), p1.getDomicilio(), dC1.getProducto().getNombre(), dC1.getCantidad(), dC1.getPrecioCosto()});
-        }
-    }
-
-    private void limpiarTabla() {
-        int filas = modelo.getRowCount() - 1; //saber cantidad de filas
-
-        for (int i = filas; i >= 0; i--) {   //recorre para borralas una x una
-            modelo.removeRow(i);
-        }
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -269,6 +223,52 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_checkTodasPropertyChange
 
+    private void CrearTabla() {
+
+        //para cargar los datos de inscripcion a la tabla
+        //columnas:
+        ArrayList<Object> columnas = new ArrayList<Object>();
+        columnas.add("ID");
+        columnas.add("Fecha");
+        columnas.add("Nombre");
+        columnas.add("Razon Social");
+        columnas.add("Telefono");
+        columnas.add("Domicilio");
+        columnas.add("Producto");
+        columnas.add("Cantidad");
+        columnas.add("Precio");
+
+        for (Object columna : columnas) {
+            modelo.addColumn(columna);   //para agregarle columna x columna recorremos con un for each la lista columnas
+        }
+        tablaCompras.setModel(modelo); //le setemos por ultimo el modelo a la tabla
+
+        limpiarTabla();
+
+    }
+
+    private void CargarTabla() {
+
+        compras = comData.listaCompras();
+
+        for (Compra aux : compras) {
+
+            Proveedor p1 = provD.buscarProveedorPorID(aux.getProveedorC().getIdProveedor());
+    
+            DetalleCompra dC1 = dC.buscarDetalleCompra(aux.getIdCompra());
+          
+
+            modelo.addRow(new Object[]{aux.getIdCompra(), aux.getFecha(), p1.getNombre(), p1.getRazonSocial(), p1.getTelefono(), p1.getDomicilio(), dC1.getProducto().getNombre(), dC1.getCantidad(), dC1.getPrecioCosto()});
+        }
+    }
+
+    private void limpiarTabla() {
+        int filas = modelo.getRowCount() - 1; //saber cantidad de filas
+
+        for (int i = filas; i >= 0; i--) {   //recorre para borralas una x una
+            modelo.removeRow(i);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser calendario;

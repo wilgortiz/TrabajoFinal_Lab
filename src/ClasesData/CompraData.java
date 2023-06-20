@@ -115,9 +115,10 @@ public class CompraData {
                listaDeCompras.add(com);
              }
              
-             
+             ps.close();
+             rs.close();
          } catch (SQLException ex) {
-            
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Compra" + ex.getMessage());
          }
         
          return listaDeCompras;

@@ -66,7 +66,7 @@ public class DetalleCompraData {
         
       DetalleCompra detC = null;
         
-        String sql = "SELECT idDetalle, cantidad, precioCosto, idCompra, idProducto FROM detallecompra WHERE idCompra =?";
+        String sql = "SELECT * FROM detallecompra WHERE idCompra =?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -91,7 +91,7 @@ public class DetalleCompraData {
             
             
         } catch (SQLException ex) {
-            
+             JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla detalle de compra" + ex.getMessage());
         }
        return detC;
     }
