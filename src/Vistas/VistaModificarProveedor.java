@@ -244,11 +244,11 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
                 
                 proveedor = new Proveedor(id, nombre, razonSocial, direccion, telefono);
                 
-                  if ("disponible".equals(estado)) {
+                  if ("disponible".equals( modelo.getValueAt(tablaProveedores.getSelectedRow(), 5).toString().toLowerCase())) {
 
                 proveedor.setEstado(true);
                 pD.modificarProveedor(proveedor, id);
-            } else if ("no disponible".equals(estado)) {
+            } else if ("no disponible".equals(modelo.getValueAt(tablaProveedores.getSelectedRow(), 5).toString().toLowerCase())) {
 
                 proveedor.setEstado(false);
                 pD.modificarProveedor(proveedor, id);

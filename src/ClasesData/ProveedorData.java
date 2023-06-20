@@ -160,7 +160,7 @@ public class ProveedorData {
     }
      
     public void eliminarProveedor(int id) {
-         String sql = "UPDATE Proveedor SET  telefono=? WHERE idProveedor=?";
+         String sql = "UPDATE Proveedor SET  estado=? WHERE idProveedor=?";
         
         PreparedStatement ps;
         
