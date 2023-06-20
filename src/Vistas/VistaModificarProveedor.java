@@ -224,13 +224,13 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //
-//        try {
+        try {
             int id = (int) modelo.getValueAt(tablaProveedores.getSelectedRow(), 0);
             String nombre = (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 1);
             String razonSocial = (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 2);
             String direccion = (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 3);
             String telefono = (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 4);
-            String estado =   (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 5);
+           
 
             // Expresión regular para validar que ingrese numeros y ademas el caracter vacío
             String regex = "^[0-9 ]*$";
@@ -263,9 +263,9 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "El telefono debe ser numerico");
             }
 
-//        } catch (Exception a) {
-//            JOptionPane.showMessageDialog(null, "Selecciona un Proveedor");
-//        }
+        } catch (Exception a) {
+            JOptionPane.showMessageDialog(null, "Selecciona un Proveedor");
+        }
 
         limpiarTabla();
         CargarTabla();

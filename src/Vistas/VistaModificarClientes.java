@@ -207,9 +207,31 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
             // Comprobamos si el telefono cumple con el patron. Debe ingresar numeros.
             if (telefono.matches(regex)) {
 
+               
+                
+                
+                
                 cliente = new Cliente(id, apellido, nombre, direccion, telefono);
+                
+                
+                 if ("disponible".equals( modelo.getValueAt(tablaClientes.getSelectedRow(), 5).toString().toLowerCase())) {
+
+                cliente.setEstado(true);
+                cD.modificarCliente(cliente, id);
+            } else if ("no disponible".equals(modelo.getValueAt(tablaClientes.getSelectedRow(), 5).toString().toLowerCase())) {
+
+                cliente.setEstado(false);
+                cD.modificarCliente(cliente, id);
+            } else {
+                JOptionPane.showMessageDialog(null, "Los valores de Estado deben ser Disponible o No disponible");
+            }
 
                 cD.modificarCliente(cliente, id);
+           
+            
+            
+            
+            
             } else {
                 JOptionPane.showMessageDialog(null, "El telefono debe ser numerico");
             }
@@ -224,8 +246,8 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        String telefono = (String) modelo.getValueAt(tablaClientes.getSelectedRow(), 4);
-        cD.eliminarCliente(telefono);
+        int id = (int) modelo.getValueAt(tablaClientes.getSelectedRow(), 0);
+        cD.eliminarCliente(id);
         limpiarTabla();
         CargarTabla();
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -263,6 +285,7 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
         columnas.add("Apellido");
         columnas.add("Domicilio");
         columnas.add("Telefono");
+         columnas.add("Estado");
 
         for (Object columna : columnas) {
             modelo.addColumn(columna);   //para agregarle columna x columna recorremos con un for each la lista columnas
@@ -278,8 +301,15 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
         listaClientes = (ArrayList<Cliente>) cD.listarClientes();
 
         for (Cliente aux : listaClientes) {
+            
+            String estado;
+            if(aux.isEstado() == true){
+                 estado = "Disponible";
+            }else{
+                 estado = "No disponible";
+            }
 
-            modelo.addRow(new Object[]{aux.getIdCliente(), aux.getNombre(), aux.getApellido(), aux.getDomicilio(), aux.getTelefono()});  //cremos la fila de la tabla agregandole valor a sus 3 columnas
+            modelo.addRow(new Object[]{aux.getIdCliente(), aux.getNombre(), aux.getApellido(), aux.getDomicilio(), aux.getTelefono(),estado});  //cremos la fila de la tabla agregandole valor a sus 3 columnas
         }
     }
 
