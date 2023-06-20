@@ -226,7 +226,7 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Los valores de Estado deben ser Disponible o No disponible");
             }
 
-                cD.modificarCliente(cliente, id);
+              
            
             
             
