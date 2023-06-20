@@ -124,5 +124,31 @@ public class ProveedorData {
 
         return p;
     }
+     
+    public void eliminarProveedor(String telefono) {
+         String sql = "UPDATE producto SET estado=? WHERE idProducto=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+           
+            ps.setBoolean(1, false);
+            ps.setInt(2, id);
+            
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "El Producto se elimino correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al eliminar el Producto");
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
+        }
+    }
     
 }

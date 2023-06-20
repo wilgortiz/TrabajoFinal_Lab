@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Vistas;
 
 import ClasesData.ClienteData;
@@ -12,10 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author wilgortiz
- */
+
 public class VistaModificarClientes extends javax.swing.JInternalFrame {
 
     private Cliente cliente;

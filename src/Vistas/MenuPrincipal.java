@@ -312,7 +312,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemRegistroComprasActionPerformed
 
     private void itemModificarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModificarPActionPerformed
-        // TODO add your handling code here:
+            escritorio.removeAll(); //remover todo
+        escritorio.repaint(); //redibujar     
+
+        VistaModificarProveedor vMP = new   VistaModificarProveedor();   //creamos la vista cliente
+        vMP.setVisible(true); //hacemos visible esa vista
+
+        //agregamos y la llevamos al frente del escritorio
+        escritorio.add(vMP);
+        escritorio.moveToFront(vMP);
     }//GEN-LAST:event_itemModificarPActionPerformed
 
     public static void main(String args[]) {
