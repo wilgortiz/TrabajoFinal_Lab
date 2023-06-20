@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaListaCompras extends javax.swing.JInternalFrame {
 
-    private List<Compra> compras  ;
+    private List<Compra> compras;
     private CompraData comData;
     private DetalleCompra dCompra;
     private Compra compra;
@@ -43,7 +43,6 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
         CrearTabla();
     }
 
-    
     private void CrearTabla() {
 
         //para cargar los datos de inscripcion a la tabla
@@ -58,8 +57,7 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
         columnas.add("Producto");
         columnas.add("Cantidad");
         columnas.add("Precio");
-        
-        
+
         for (Object columna : columnas) {
             modelo.addColumn(columna);   //para agregarle columna x columna recorremos con un for each la lista columnas
         }
@@ -69,6 +67,20 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
 
     }
 
+    private void CargarTabla() {
+        limpiarTabla();
+        compras = comData.listaCompras();
+
+        for (Compra aux : compras) {
+
+            Proveedor p1 = provD.buscarProveedorPorID(aux.getProveedorC().getIdProveedor());
+
+            DetalleCompra dC1 = dC.buscarDetalleCompra(aux.getIdCompra());
+
+            modelo.addRow(new Object[]{aux.getIdCompra(), aux.getFecha(), p1.getNombre(), p1.getRazonSocial(), p1.getTelefono(), p1.getDomicilio(), dC1.getProducto().getNombre(), dC1.getCantidad(), dC1.getPrecioCosto()});
+        }
+    }
+
     private void limpiarTabla() {
         int filas = modelo.getRowCount() - 1; //saber cantidad de filas
 
@@ -76,6 +88,7 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -209,7 +222,7 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void calendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendarioPropertyChange
-         limpiarTabla();
+        limpiarTabla();
         compras = comData.listaCompras();
         // Obtener el valor seleccionado como objeto Calendar
         Calendar calendar = calendario.getCalendar();
@@ -247,7 +260,7 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
 
     private void checkTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTodasActionPerformed
         limpiarTabla();
-        if(checkTodas.isSelected()){
+        if (checkTodas.isSelected()) {
             CargarTabla();
         }
     }//GEN-LAST:event_checkTodasActionPerformed
