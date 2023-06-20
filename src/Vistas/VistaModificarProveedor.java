@@ -5,6 +5,7 @@ import ClasesData.*;
 
 import Modelo.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -204,11 +205,17 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
         String subCadena = textoBuscar.getText();
         System.out.println(subCadena);
         try {
-            ArrayList<Cliente> listaClientes2 = (ArrayList<Cliente>) cD.listarClientesPorSubCadena(subCadena);
+            ArrayList<Proveedor> listaProveedores = (ArrayList<Proveedor>) pD.listarProveedorPorSubCadena(subCadena);
 
-            for (Cliente aux : listaClientes2) {
+            for (Proveedor aux : listaProveedores) {
 
-                modelo.addRow(new Object[]{aux.getIdCliente(), aux.getNombre(), aux.getApellido(), aux.getDomicilio(), aux.getTelefono()});
+                 String estado;
+            if(aux.isEstado() == true){
+                 estado = "Disponible";
+            }else{
+                 estado = "No disponible";
+            }
+            modelo.addRow(new Object[]{aux.getIdProveedor(), aux.getNombre(), aux.getRazonSocial(), aux.getDomicilio(), aux.getTelefono(),estado});  
             }
         } catch (Exception e) {
             limpiarTabla();
@@ -216,38 +223,57 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_textoBuscarKeyReleased
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-
-        try {
+//
+//        try {
             int id = (int) modelo.getValueAt(tablaProveedores.getSelectedRow(), 0);
             String nombre = (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 1);
-            String apellido = (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 2);
+            String razonSocial = (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 2);
             String direccion = (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 3);
             String telefono = (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 4);
+            String estado =   (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 5);
 
             // Expresión regular para validar que ingrese numeros y ademas el caracter vacío
             String regex = "^[0-9 ]*$";
 
             // Comprobamos si el telefono cumple con el patron. Debe ingresar numeros.
             if (telefono.matches(regex)) {
+                
+                
+                
+                
+                
+                proveedor = new Proveedor(id, nombre, razonSocial, direccion, telefono);
+                
+                  if ("disponible".equals(estado)) {
 
-                cliente = new Cliente(id, apellido, nombre, direccion, telefono);
+                proveedor.setEstado(true);
+                pD.modificarProveedor(proveedor, id);
+            } else if ("no disponible".equals(estado)) {
 
-                cD.modificarCliente(cliente, id);
+                proveedor.setEstado(false);
+                pD.modificarProveedor(proveedor, id);
+            } else {
+                JOptionPane.showMessageDialog(null, "Los valores de Estado deben ser Disponible o No disponible");
+            }
+                
+               
+
+               
             } else {
                 JOptionPane.showMessageDialog(null, "El telefono debe ser numerico");
             }
 
-        } catch (Exception a) {
-            JOptionPane.showMessageDialog(null, "Selecciona un Cliente");
-        }
+//        } catch (Exception a) {
+//            JOptionPane.showMessageDialog(null, "Selecciona un Proveedor");
+//        }
 
         limpiarTabla();
         CargarTabla();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        String telefono = (String) modelo.getValueAt(tablaProveedores.getSelectedRow(), 4);
-        cD.eliminarCliente(telefono);
+        int id = (int) modelo.getValueAt(tablaProveedores.getSelectedRow(), 0);
+        pD.eliminarProveedor(id);
         limpiarTabla();
         CargarTabla();
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -267,6 +293,7 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
         columnas.add("Razon Social");
         columnas.add("Domicilio");
         columnas.add("Telefono");
+        columnas.add("Estado");
 
         for (Object columna : columnas) {
             modelo.addColumn(columna);   //para agregarle columna x columna recorremos con un for each la lista columnas
@@ -280,10 +307,16 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
 
     private void CargarTabla() {
         listaProveedores= (ArrayList<Proveedor>) pD.listarProveedores();
-
+        
         for (Proveedor aux : listaProveedores) {
-
-            modelo.addRow(new Object[]{aux.getIdProveedor(), aux.getNombre(), aux.getRazonSocial(), aux.getDomicilio(), aux.getTelefono()});  //cremos la fila de la tabla agregandole valor a sus 3 columnas
+            
+            String estado;
+            if(aux.isEstado() == true){
+                 estado = "Disponible";
+            }else{
+                 estado = "No disponible";
+            }
+            modelo.addRow(new Object[]{aux.getIdProveedor(), aux.getNombre(), aux.getRazonSocial(), aux.getDomicilio(), aux.getTelefono(),estado});  //cremos la fila de la tabla agregandole valor a sus 3 columnas
         }
     }
 

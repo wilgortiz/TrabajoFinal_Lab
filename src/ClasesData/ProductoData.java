@@ -212,28 +212,33 @@ public class ProductoData {
         return p;
     }
 
-      public void eliminarProveedor(String tel) {
-        String sql = "DELETE FROM proveedor WHERE telefono=?";
-        
-        PreparedStatement ps;
-        
+     public void eliminarProducto(int id) {
+         String sql = "UPDATE producto SET estado=? WHERE idProducto=?";
+
         try {
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
+
+           
+            ps.setBoolean(1, false);
+            ps.setInt(2, id);
             
-            ps.setString(1, tel);
-            
-            int aux = ps.executeUpdate();
-            if (aux == 1) {
-                JOptionPane.showMessageDialog(null, "Proveedor eliminado con exito");
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "El Producto se elimino correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al eliminar el Producto");
             }
-            
+
             ps.close();
-            
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Proveedor" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
     }
     
+     
     
     public void incrementarStock(int idProducto, DetalleCompra compra, int stock) {
         String sql = "UPDATE producto SET stock= ?  WHERE producto.idProducto = ?;";

@@ -273,7 +273,7 @@ public class VistaRegistrarProveedor extends javax.swing.JInternalFrame {
         // Comprobamos si el telefono cumple con el patron. Debe ingresar numeros.
         if (telefono.matches(regex)) {
             Proveedor p1 = new Proveedor(textonombreProv.getText(),
-                    textoRazonSocialProv.getText(), textodomicilioProv.getText(), telefono);
+                    textoRazonSocialProv.getText(), textodomicilioProv.getText(), telefono, true);
             vP.registrarProveedor(p1);
             limpiar();
         } else {
