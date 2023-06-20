@@ -7,6 +7,7 @@ package Vistas;
 
 import ClasesData.ProveedorData;
 import Modelo.Proveedor;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -257,13 +258,32 @@ public class VistaRegistrarProveedor extends javax.swing.JInternalFrame {
 
     private void botonagregarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonagregarProvActionPerformed
 
-        Proveedor p1 = new Proveedor(textonombreProv.getText(), textoRazonSocialProv.getText(),
-            textodomicilioProv.getText(),
-            textotelefonoProv.getText());
+        //        Proveedor p1 = new Proveedor(textonombreProv.getText(), textoRazonSocialProv.getText(),
+//            textodomicilioProv.getText(),
+//            textotelefonoProv.getText());
+//
+//        //registramos al proveedor
+//        vP.registrarProveedor(p1);
+//        limpiar();
+        String telefono = textotelefonoProv.getText();
 
-        //registramos al proveedor
-        vP.registrarProveedor(p1);
-        limpiar();
+        // Expresión regular para validar que ingrese numeros y ademas el caracter vacío
+        String regex = "^[0-9 ]*$";
+
+        // Comprobamos si el telefono cumple con el patron. Debe ingresar numeros.
+        if (telefono.matches(regex)) {
+            Proveedor p1 = new Proveedor(textonombreProv.getText(),
+                    textoRazonSocialProv.getText(), textodomicilioProv.getText(), telefono);
+            vP.registrarProveedor(p1);
+            limpiar();
+        } else {
+            // El teléfono no cumple con el patrón, mostrar mensaje de error o solicitar nuevo ingreso
+            JOptionPane.showMessageDialog(null, "Telefono invalido. Ingrese solo numeros ", "Error", JOptionPane.ERROR_MESSAGE);
+
+            textotelefonoProv.setText(""); // Limpiar el campo telefono
+        }
+
+
     }//GEN-LAST:event_botonagregarProvActionPerformed
 
     private void botonSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalir1ActionPerformed
