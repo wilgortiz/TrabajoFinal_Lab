@@ -67,8 +67,9 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         calendario2 = new com.toedter.calendar.JDateChooser();
         checkTodas = new javax.swing.JCheckBox();
+        btnSalir1 = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 24));
+        jPanel1.setBackground(new java.awt.Color(255, 230, 0));
 
         tablaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,6 +140,12 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
             }
         });
 
+        btnSalir1.setBackground(new java.awt.Color(255, 0, 0));
+        btnSalir1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        btnSalir1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir1.setText("X");
+        btnSalir1.setBorder(null);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -148,7 +155,9 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1266, 1266, 1266)
+                        .addGap(819, 819, 819)
+                        .addComponent(btnSalir1)
+                        .addGap(421, 421, 421)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(233, 233, 233)
@@ -176,7 +185,9 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnSalir))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSalir)
+                            .addComponent(btnSalir1)))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -315,6 +326,7 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnSalir1;
     private com.toedter.calendar.JDateChooser calendario2;
     private javax.swing.JCheckBox checkTodas;
     private javax.swing.JLabel jLabel1;

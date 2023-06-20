@@ -39,10 +39,10 @@ public class VistaAgregClientes extends javax.swing.JInternalFrame {
         textodomicilioCliente = new javax.swing.JTextField();
         textotelefonoCliente = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 230, 0));
 
-        botongregarCliente.setForeground(new java.awt.Color(0, 0, 0));
         botongregarCliente.setText("AGREGAR CLIENTE");
         botongregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +60,6 @@ public class VistaAgregClientes extends javax.swing.JInternalFrame {
         jLabel3.setText("Apellido");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Para agregar un cliente complete los campos");
 
@@ -72,6 +71,17 @@ public class VistaAgregClientes extends javax.swing.JInternalFrame {
         jLabel1.setText("AGREGAR CLIENTES");
         jLabel1.setToolTipText("");
 
+        btnSalir.setBackground(new java.awt.Color(255, 0, 0));
+        btnSalir.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("X");
+        btnSalir.setBorder(null);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -79,9 +89,11 @@ public class VistaAgregClientes extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addContainerGap(71, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -116,7 +128,9 @@ public class VistaAgregClientes extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalir))
                 .addGap(30, 30, 30)
                 .addComponent(jLabel6)
                 .addGap(96, 96, 96)
@@ -135,7 +149,7 @@ public class VistaAgregClientes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textotelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap(118, Short.MAX_VALUE)
@@ -168,8 +182,9 @@ public class VistaAgregClientes extends javax.swing.JInternalFrame {
 //
 //        limpiar();
 
-
-        String telefono = textotelefonoCliente.getText();
+        if(!"".equals(textotelefonoCliente.getText())){
+            
+            String telefono = textotelefonoCliente.getText();
 
         // Expresión regular para validar que ingrese numeros y ademas el caracter vacío
         String regex = "^[0-9 ]*$";
@@ -186,9 +201,16 @@ public class VistaAgregClientes extends javax.swing.JInternalFrame {
 
             textotelefonoCliente.setText(""); // Limpiar el campo telefono
         }
-
+        
+       } else{
+            JOptionPane.showMessageDialog(null, "El campo telefono es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
     }//GEN-LAST:event_botongregarClienteActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     public void limpiar() {
         textoapellidoCliente.setText("");
@@ -201,6 +223,7 @@ public class VistaAgregClientes extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botongregarCliente;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

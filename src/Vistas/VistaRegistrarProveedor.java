@@ -54,7 +54,7 @@ public class VistaRegistrarProveedor extends javax.swing.JInternalFrame {
         textoRazonSocialProv = new javax.swing.JTextField();
         textodomicilioProv = new javax.swing.JTextField();
         botonagregarProv = new javax.swing.JButton();
-        botonSalir1 = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         botongregarCliente.setText("Agregar Cliente");
         botongregarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +109,6 @@ public class VistaRegistrarProveedor extends javax.swing.JInternalFrame {
         jLabel12.setText("PROVEEDORES");
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Para registrar un Proveedor complete los campos");
 
@@ -119,7 +118,7 @@ public class VistaRegistrarProveedor extends javax.swing.JInternalFrame {
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel11.setText("Telefono");
 
-        botonagregarProv.setForeground(new java.awt.Color(0, 0, 0));
+        botonagregarProv.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         botonagregarProv.setText("Registrar Proveedor");
         botonagregarProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,57 +126,55 @@ public class VistaRegistrarProveedor extends javax.swing.JInternalFrame {
             }
         });
 
-        botonSalir1.setForeground(new java.awt.Color(0, 0, 0));
-        botonSalir1.setText("SALIR");
-        botonSalir1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSalir1ActionPerformed(evt);
-            }
-        });
+        btnSalir.setBackground(new java.awt.Color(255, 0, 0));
+        btnSalir.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("X");
+        btnSalir.setBorder(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(58, 58, 58)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(textonombreProv, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(botonSalir1)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(textonombreProv, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel8)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(textoRazonSocialProv, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(textotelefonoProv, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(textodomicilioProv, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
-                .addContainerGap(37, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(textoRazonSocialProv, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(textodomicilioProv, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                                    .addComponent(textotelefonoProv))))))
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir)
+                        .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(botonagregarProv)
-                        .addGap(223, 223, 223))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel9)
                         .addGap(115, 115, 115))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonagregarProv)
+                .addGap(221, 221, 221))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(30, 30, 30)
@@ -188,7 +185,9 @@ public class VistaRegistrarProveedor extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalir))
                 .addGap(36, 36, 36)
                 .addComponent(jLabel9)
                 .addGap(65, 65, 65)
@@ -208,10 +207,8 @@ public class VistaRegistrarProveedor extends javax.swing.JInternalFrame {
                     .addComponent(jLabel11)
                     .addComponent(textotelefonoProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addComponent(botonagregarProv)
-                .addGap(18, 18, 18)
-                .addComponent(botonSalir1)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(botonagregarProv, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(129, Short.MAX_VALUE)
@@ -258,14 +255,9 @@ public class VistaRegistrarProveedor extends javax.swing.JInternalFrame {
 
     private void botonagregarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonagregarProvActionPerformed
 
-        //        Proveedor p1 = new Proveedor(textonombreProv.getText(), textoRazonSocialProv.getText(),
-//            textodomicilioProv.getText(),
-//            textotelefonoProv.getText());
-//
-//        //registramos al proveedor
-//        vP.registrarProveedor(p1);
-//        limpiar();
-        String telefono = textotelefonoProv.getText();
+        
+        if(!"".equals(textotelefonoProv.getText())){
+              String telefono = textotelefonoProv.getText();
 
         // Expresión regular para validar que ingrese numeros y ademas el caracter vacío
         String regex = "^[0-9 ]*$";
@@ -282,13 +274,13 @@ public class VistaRegistrarProveedor extends javax.swing.JInternalFrame {
 
             textotelefonoProv.setText(""); // Limpiar el campo telefono
         }
+       } else{
+             JOptionPane.showMessageDialog(null, "El campo telefono es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+       
 
 
     }//GEN-LAST:event_botonagregarProvActionPerformed
-
-    private void botonSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalir1ActionPerformed
-        dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_botonSalir1ActionPerformed
 
     public void limpiar() {
         textonombreProv.setText("");
@@ -301,9 +293,9 @@ public class VistaRegistrarProveedor extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonEliminarCliente;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JButton botonSalir1;
     private javax.swing.JButton botonagregarProv;
     private javax.swing.JButton botongregarCliente;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

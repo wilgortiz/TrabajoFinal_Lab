@@ -57,15 +57,16 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
         tablaCompras = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         checkTodas = new javax.swing.JCheckBox();
+        btnSalir = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 24));
+        jPanel1.setBackground(new java.awt.Color(255, 230, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 102));
         jLabel1.setText("Registro de Compras");
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 102));
         jLabel2.setText("Filtrar por Fecha:");
 
@@ -89,7 +90,9 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(0, 51, 102));
         jLabel3.setText("Fravemax");
 
-        checkTodas.setText("Todas");
+        checkTodas.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 16)); // NOI18N
+        checkTodas.setForeground(new java.awt.Color(0, 51, 102));
+        checkTodas.setText("Mostrar Todo");
         checkTodas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 checkTodasItemStateChanged(evt);
@@ -116,49 +119,59 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
             }
         });
 
+        btnSalir.setBackground(new java.awt.Color(255, 0, 0));
+        btnSalir.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("X");
+        btnSalir.setBorder(null);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 365, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSalir)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 289, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(checkTodas)
-                                .addGap(245, 245, 245))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(368, 368, 368))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(370, 370, 370))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(checkTodas, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(265, 265, 265))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(2, 2, 2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(btnSalir))
+                .addGap(4, 4, 4)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                            .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(checkTodas)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkTodas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,6 +187,29 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void checkTodasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_checkTodasPropertyChange
+
+    }//GEN-LAST:event_checkTodasPropertyChange
+
+    private void checkTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTodasActionPerformed
+        limpiarTabla();
+        if (checkTodas.isSelected()) {
+            CargarTabla();
+        }
+    }//GEN-LAST:event_checkTodasActionPerformed
+
+    private void checkTodasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkTodasMouseReleased
+
+    }//GEN-LAST:event_checkTodasMouseReleased
+
+    private void checkTodasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkTodasStateChanged
+
+    }//GEN-LAST:event_checkTodasStateChanged
+
+    private void checkTodasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkTodasItemStateChanged
+
+    }//GEN-LAST:event_checkTodasItemStateChanged
 
     private void calendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendarioPropertyChange
         limpiarTabla();
@@ -199,29 +235,6 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_calendarioPropertyChange
-
-    private void checkTodasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkTodasItemStateChanged
-
-    }//GEN-LAST:event_checkTodasItemStateChanged
-
-    private void checkTodasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkTodasStateChanged
-
-    }//GEN-LAST:event_checkTodasStateChanged
-
-    private void checkTodasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkTodasMouseReleased
-
-    }//GEN-LAST:event_checkTodasMouseReleased
-
-    private void checkTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTodasActionPerformed
-        limpiarTabla();
-        if (checkTodas.isSelected()) {
-            CargarTabla();
-        }
-    }//GEN-LAST:event_checkTodasActionPerformed
-
-    private void checkTodasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_checkTodasPropertyChange
-
-    }//GEN-LAST:event_checkTodasPropertyChange
 
     private void CrearTabla() {
 
@@ -271,6 +284,7 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalir;
     private com.toedter.calendar.JDateChooser calendario;
     private javax.swing.JCheckBox checkTodas;
     private com.toedter.calendar.JDateChooser jDateChooser1;

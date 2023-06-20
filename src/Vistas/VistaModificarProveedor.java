@@ -37,7 +37,6 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         textoBuscar = new javax.swing.JTextField();
@@ -49,7 +48,7 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(255, 248, 2));
+        jPanel1.setBackground(new java.awt.Color(255, 230, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 102));
@@ -99,7 +98,6 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("*Haga doble click en la celda que desea editar");
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -150,9 +148,7 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,9 +164,7 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(textoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
@@ -338,7 +332,6 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tablaProveedores;
     private javax.swing.JTextField textoBuscar;
     // End of variables declaration//GEN-END:variables
