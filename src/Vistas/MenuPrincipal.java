@@ -20,15 +20,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MenuProveedor = new javax.swing.JMenu();
         itemRegistrarProv = new javax.swing.JMenuItem();
         itemModificarP = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        menuRegistrar = new javax.swing.JMenuItem();
-        itemInventario = new javax.swing.JMenuItem();
         itemRegistro = new javax.swing.JMenu();
         itemRegistrar = new javax.swing.JMenuItem();
         itemRegistroLista = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         itemRegistrarCompra = new javax.swing.JMenuItem();
         itemRegistroCompras = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        menuRegistrar = new javax.swing.JMenuItem();
+        itemInventario = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
 
@@ -94,31 +94,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(MenuProveedor);
 
-        jMenu3.setText("Producto");
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
-            }
-        });
-
-        menuRegistrar.setText("Registrar");
-        menuRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuRegistrarActionPerformed(evt);
-            }
-        });
-        jMenu3.add(menuRegistrar);
-
-        itemInventario.setText("Inventario");
-        itemInventario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemInventarioActionPerformed(evt);
-            }
-        });
-        jMenu3.add(itemInventario);
-
-        jMenuBar1.add(jMenu3);
-
         itemRegistro.setText("Venta");
         itemRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +138,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2.add(itemRegistroCompras);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Producto");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
+
+        menuRegistrar.setText("Registrar");
+        menuRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRegistrarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuRegistrar);
+
+        itemInventario.setText("Inventario");
+        itemInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemInventarioActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemInventario);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
