@@ -124,6 +124,11 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("X");
         btnSalir.setBorder(null);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,7 +143,7 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSalir)))
+                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 289, Short.MAX_VALUE)
@@ -236,6 +241,10 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_calendarioPropertyChange
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     private void CrearTabla() {
 
         //para cargar los datos de inscripcion a la tabla
@@ -267,9 +276,8 @@ public class VistaListaCompras extends javax.swing.JInternalFrame {
         for (Compra aux : compras) {
 
             Proveedor p1 = provD.buscarProveedorPorID(aux.getProveedorC().getIdProveedor());
-    
+
             DetalleCompra dC1 = dC.buscarDetalleCompra(aux.getIdCompra());
-          
 
             modelo.addRow(new Object[]{aux.getIdCompra(), aux.getFecha(), p1.getNombre(), p1.getRazonSocial(), p1.getTelefono(), p1.getDomicilio(), dC1.getProducto().getNombre(), dC1.getCantidad(), dC1.getPrecioCosto()});
         }

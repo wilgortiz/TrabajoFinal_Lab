@@ -145,6 +145,11 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
         btnSalir1.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir1.setText("X");
         btnSalir1.setBorder(null);
+        btnSalir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,9 +160,9 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(819, 819, 819)
-                        .addComponent(btnSalir1)
-                        .addGap(421, 421, 421)
+                        .addGap(807, 807, 807)
+                        .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(413, 413, 413)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(233, 233, 233)
@@ -278,6 +283,10 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
         CargarTabla();
         }
     }//GEN-LAST:event_checkTodasActionPerformed
+
+    private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
+      dispose();
+    }//GEN-LAST:event_btnSalir1ActionPerformed
 
     private void CrearTabla() {
 
