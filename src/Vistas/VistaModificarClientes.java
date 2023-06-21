@@ -289,8 +289,8 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
         modelo = new DefaultTableModel() {
         @Override
         public boolean isCellEditable(int row, int column) {
-            // Hacer que la columna "ID" no sea editable
-            return column != 0; // Cambia 0 por el índice de columna adecuado para "ID" (si es diferente)
+            
+            return column != 0; 
         }
     };
 

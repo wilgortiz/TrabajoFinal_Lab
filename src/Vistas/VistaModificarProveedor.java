@@ -288,6 +288,15 @@ public class VistaModificarProveedor extends javax.swing.JInternalFrame {
         columnas.add("Domicilio");
         columnas.add("Telefono");
         columnas.add("Estado");
+        
+        modelo = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            
+            return column != 0; 
+        }
+    };
+
 
         for (Object columna : columnas) {
             modelo.addColumn(columna);   //para agregarle columna x columna recorremos con un for each la lista columnas

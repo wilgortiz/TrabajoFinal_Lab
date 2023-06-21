@@ -301,6 +301,15 @@ public class VistaListaVentas extends javax.swing.JInternalFrame {
         columnas.add("Producto");
         columnas.add("Cantidad");
         columnas.add("Precio");
+        
+         modelo = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            
+            return column != 0 && column != 1 && column != 2 && column != 3 && column != 4 && column != 5 && column != 6 && column != 7; 
+        }
+    };
+
 
         for (Object columna : columnas) {
             modelo.addColumn(columna);   //para agregarle columna x columna recorremos con un for each la lista columnas
