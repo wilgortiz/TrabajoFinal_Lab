@@ -257,8 +257,13 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
             ArrayList<Cliente> listaClientes2 = (ArrayList<Cliente>) cD.listarClientesPorSubCadena(subCadena);
 
             for (Cliente aux : listaClientes2) {
-
-                modelo.addRow(new Object[]{aux.getIdCliente(), aux.getNombre(), aux.getApellido(), aux.getDomicilio(), aux.getTelefono()});
+                 String estado;
+            if(aux.isEstado() == true){
+                 estado = "Disponible";
+            }else{
+                 estado = "No disponible";
+            }
+                modelo.addRow(new Object[]{aux.getIdCliente(), aux.getNombre(), aux.getApellido(), aux.getDomicilio(), aux.getTelefono(), estado});
             }
         } catch (Exception e) {
             limpiarTabla();
