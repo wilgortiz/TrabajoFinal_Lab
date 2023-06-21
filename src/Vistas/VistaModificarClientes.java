@@ -285,6 +285,14 @@ public class VistaModificarClientes extends javax.swing.JInternalFrame {
         columnas.add("Domicilio");
         columnas.add("Telefono");
          columnas.add("Estado");
+         
+        modelo = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            // Hacer que la columna "ID" no sea editable
+            return column != 0; // Cambia 0 por el índice de columna adecuado para "ID" (si es diferente)
+        }
+    };
 
         for (Object columna : columnas) {
             modelo.addColumn(columna);   //para agregarle columna x columna recorremos con un for each la lista columnas
